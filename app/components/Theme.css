@@ -1,0 +1,17 @@
+@media (max-width: 768px) {
+  .theme-card {
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+  
+  .theme-card > div:last-child {
+    text-align: center !important;
+  }
+  
+  .theme-card > div:last-child p {
+    margin: 0 auto 2rem auto !important;
+  }
+}
+.theme-image:hover {
+  transform: scale(1.05);
+}
