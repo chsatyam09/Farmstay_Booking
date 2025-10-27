@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ImageModal from '@/app/components/ImageModal'
 
 interface PropertyDetailsProps {
@@ -353,17 +353,267 @@ const propertyData: { [key: string]: Property } = {
   }
 }
 
+// Success Modal Component
+function SuccessModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  const phoneNumbers = [
+    { number: '+91 7903962473', whatsapp: '917903962473' },
+    { number: '+91 9211255393', whatsapp: '919211255393' }
+  ]
+
+  // Auto-close after 10 seconds
+  React.useEffect(() => {
+    if (isOpen) {
+      const timer = setTimeout(() => {
+        onClose()
+      }, 10000)
+      
+      return () => clearTimeout(timer)
+    }
+  }, [isOpen, onClose])
+
+  if (!isOpen) return null
+
+  return (
+    <div style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 9999,
+      padding: '1rem'
+    }} onClick={onClose}>
+      <div style={{
+        backgroundColor: 'white',
+        borderRadius: '16px',
+        padding: '1.75rem 1.75rem 1.75rem 1.75rem',
+        maxWidth: '500px',
+        width: '100%',
+        maxHeight: '90vh',
+        overflowY: 'auto',
+        boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
+        animation: 'slideIn 0.3s ease',
+        position: 'relative',
+        margin: 'auto'
+      }} onClick={(e) => e.stopPropagation()}>
+        {/* Close Button Icon - Top Right */}
+        <button
+          onClick={onClose}
+          style={{
+            position: 'absolute',
+            top: '1rem',
+            right: '1rem',
+            background: 'none',
+            border: 'none',
+            fontSize: '1.5rem',
+            cursor: 'pointer',
+            width: '32px',
+            height: '32px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: '50%',
+            color: '#6b7280',
+            transition: 'all 0.2s ease',
+            zIndex: 10
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.backgroundColor = '#f3f4f6'
+            e.currentTarget.style.color = '#1f2937'
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.backgroundColor = 'transparent'
+            e.currentTarget.style.color = '#6b7280'
+          }}
+        >
+          ✕
+        </button>
+        {/* Success Icon */}
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          marginBottom: '1rem'
+        }}>
+          <div style={{
+            width: '60px',
+            height: '60px',
+            borderRadius: '50%',
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '2rem'
+          }}>
+            ✓
+          </div>
+        </div>
+
+        {/* Success Message */}
+<h2 style={{
+  textAlign: 'center',
+  fontSize: '1.5rem',
+  fontWeight: 'bold',
+  fontFamily: 'Inter, Arial, sans-serif',
+  color: '#1a202c',
+  marginBottom: '0.25rem'
+}}>
+  Message Sent Successfully!
+</h2>
+
+<p style={{
+  textAlign: 'center',
+  color: '#4a5568',
+  fontSize: '0.9rem',
+  fontWeight: '300', // thin text
+  fontFamily: 'Inter, Arial, sans-serif',
+  marginBottom: '1.25rem'
+}}>
+  Thank you for contacting us! We'll get back to you soon.
+</p>
+
+
+        {/* Mobile Numbers and WhatsApp Buttons */}
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.75rem',
+          marginBottom: '1rem'
+        }}>
+          {phoneNumbers.map((phone, index) => (
+            <div key={index} style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.75rem',
+              padding: '0.75rem',
+              background: '#f8fafc',
+              borderRadius: '10px',
+              border: '1px solid #e5e7eb',
+                fontWeight: '300', // thin text
+  fontFamily: 'Inter, Arial, sans-serif',
+            }}>
+              <div style={{
+                width: '35px',
+                height: '35px',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #25D366 0%, #20BA5A 100%)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '1rem',
+                flexShrink: 0,
+                  fontWeight: '300', // thin text
+  fontFamily: 'Inter, Arial, sans-serif',
+              }}>
+                📱
+              </div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <p style={{
+                  margin: 0,
+                  fontSize: '0.875rem',
+                  color: '#374151',
+                  fontWeight: '600',
+                  wordBreak: 'break-word'
+                }}>
+                  {phone.number}
+                </p>
+              </div>
+              <a
+                href={`https://wa.me/${phone.whatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'linear-gradient(135deg, #25D366 0%, #20BA5A 100%)',
+                  color: 'white',
+                  padding: '0.5rem 1rem',
+                  borderRadius: '8px',
+                  textDecoration: 'none',
+                  fontSize: '0.85rem',
+                  fontWeight: '600',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 4px 12px rgba(37, 211, 102, 0.3)',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)'
+                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(37, 211, 102, 0.4)'
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)'
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(37, 211, 102, 0.3)'
+                }}
+              >
+                <span style={{ marginRight: '0.4rem', fontSize: '0.95rem' }}>💬</span>
+                WhatsApp
+              </a>
+            </div>
+          ))}
+        </div>
+
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          style={{
+            width: '100%',
+            padding: '0.75rem 1.25rem',
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            color: 'white',
+            border: 'none',
+            borderRadius: '8px',
+            fontSize: '0.95rem',
+            fontWeight: '600',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease'
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.transform = 'translateY(-2px)'
+            e.currentTarget.style.boxShadow = '0 8px 20px rgba(102, 126, 234, 0.4)'
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.transform = 'translateY(0)'
+            e.currentTarget.style.boxShadow = 'none'
+          }}
+        >
+          Close
+        </button>
+      </div>
+
+      <style jsx>{`
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateY(-20px) scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+      `}</style>
+    </div>
+  )
+}
+
 export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [gridCurrentIndex, setGridCurrentIndex] = useState(0)
+  const [showSuccessModal, setShowSuccessModal] = useState(false)
   const [inquiryForm, setInquiryForm] = useState({
-    area: '',
-    eventDate: '',
-    guests: '',
-    mobile: '',
-    name: '',
+    selectedProperty: '',
+    fullName: '',
+    phoneNumber: '',
     email: '',
+    numberOfGuests: '',
+    checkInDate: '',
+    checkOutDate: '',
     message: ''
   })
 
@@ -377,14 +627,61 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
     )
   }
 
+  // Set the selected property title when component loads or property changes
+  useEffect(() => {
+    if (property) {
+      setInquiryForm(prev => ({ ...prev, selectedProperty: property.title }))
+    }
+  }, [property])
+
   const handleInquiryChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setInquiryForm({ ...inquiryForm, [e.target.name]: e.target.value })
   }
 
-  const handleInquirySubmit = (e: React.FormEvent) => {
+  const handleInquirySubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('Inquiry submitted:', inquiryForm)
-    alert('Thank you for your inquiry! We will get back to you soon.')
+    
+    try {
+      // Prepare form data for web3forms
+      const formDataToSend = new FormData()
+      formDataToSend.append('access_key', '505625ac-de77-4afc-8da0-3ebf5c632d45')
+      formDataToSend.append('selectedProperty', inquiryForm.selectedProperty)
+      formDataToSend.append('name', inquiryForm.fullName)
+      formDataToSend.append('phone', inquiryForm.phoneNumber)
+      formDataToSend.append('email', inquiryForm.email)
+      formDataToSend.append('numberOfGuests', inquiryForm.numberOfGuests)
+      formDataToSend.append('checkInDate', inquiryForm.checkInDate)
+      formDataToSend.append('checkOutDate', inquiryForm.checkOutDate)
+      formDataToSend.append('message', inquiryForm.message || 'No additional message')
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formDataToSend
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        console.log('Form submitted successfully:', data)
+        setShowSuccessModal(true)
+        setInquiryForm(prev => ({ 
+          ...prev,
+          fullName: '', 
+          phoneNumber: '', 
+          email: '', 
+          numberOfGuests: '', 
+          checkInDate: '', 
+          checkOutDate: '', 
+          message: '' 
+        }))
+      } else {
+        console.error('Form submission failed:', data)
+        alert('Failed to send message. Please try again later.')
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      alert('An error occurred. Please try again later.')
+    }
   }
 
   const openImageModal = (imageUrl: string, index: number) => {
@@ -422,9 +719,11 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
   }
 
   return (
-    <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '2rem 1rem' }}>
+    <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 0.5rem', paddingTop: '0' }}>
+
+
       {/* Back Button */}
-      <div style={{ marginBottom: '1.5rem' }}>
+      <div style={{ marginBottom: '1rem', marginTop: '0', paddingTop: '2rem' }}>
         <button
           onClick={() => window.history.back()}
           style={{
@@ -467,48 +766,15 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
           </svg>
           Back to Properties
         </button>
-      </div>
 
-      {/* Header Section */}
-      <div style={{ marginBottom: '2rem' }}>
-        <h1 style={{
-          fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
-          color: '#111111',
-          marginBottom: '0.5rem',
-          fontWeight: '600',
-          lineHeight: '1.2',
-        }}>
-          {property.title}
-        </h1>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '1rem',
-          marginBottom: '1rem',
-          flexWrap: 'wrap'
-        }}>
-          <p style={{ 
-            color: '#666', 
-            fontSize: '1.1rem',
-          }}>{property.location}</p>
-          <span style={{
-            background: '#111111',
-            color: 'white',
-            padding: '4px 12px',
-            borderRadius: '20px',
-            fontSize: '1.2rem',
-            fontWeight: '600',
-            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
-          }}>
-            {property.price}/night
-          </span>
-        </div>
+      
       </div>
 
       {/* Image Gallery - New Layout matching the image */}
       <div style={{ marginBottom: '2rem', position: 'relative' }}>
+        {/* Desktop Layout */}
         <div 
-          className="image-gallery-container"
+          className="image-gallery-container desktop-gallery"
           style={{
             display: 'grid',
             gridTemplateColumns: '2fr 1fr',
@@ -667,6 +933,189 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
                       padding: '0.5rem 1rem',
                       borderRadius: '6px',
                       fontSize: '0.9rem',
+                      fontWeight: '600',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease',
+                      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)',
+                      zIndex: 20
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.background = '#f0f0f0';
+                      e.currentTarget.style.transform = 'scale(1.05)';
+                      e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.3)';
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.background = 'white';
+                      e.currentTarget.style.transform = 'scale(1)';
+                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.2)';
+                    }}
+                  >
+                    View photos
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Mobile Layout */}
+        <div 
+          className="mobile-gallery"
+          style={{
+            display: 'none',
+            borderRadius: '12px',
+            overflow: 'hidden',
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)'
+          }}>
+          {/* Large Top Image */}
+          <div
+            onClick={() => openImageModal(property.images[0], 0)}
+            style={{
+              position: 'relative',
+              width: '100%',
+              height: '320px',
+              cursor: 'pointer',
+              transition: 'transform 0.3s ease',
+              borderRadius: '12px 12px 0 0',
+              overflow: 'hidden',
+              background: '#f8f8f8',
+              marginBottom: '0.75rem'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'scale(1.02)'
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'scale(1)'
+            }}
+          >
+            <img
+              src={property.images[0]}
+              alt="Main property image"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center'
+              }}
+            />
+          </div>
+
+          {/* Two Smaller Images Side by Side */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '0.75rem',
+            height: '200px'
+          }}>
+            {/* Left Small Image */}
+            {property.images[1] && (
+              <div
+                onClick={() => openImageModal(property.images[1], 1)}
+                style={{
+                  position: 'relative',
+                  height: '100%',
+                  cursor: 'pointer',
+                  transition: 'transform 0.3s ease',
+                  borderRadius: '0 0 0 12px',
+                  overflow: 'hidden',
+                  background: '#f8f8f8'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.02)'
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = 'scale(1)'
+                }}
+              >
+                <img
+                  src={property.images[1]}
+                  alt="Property image 2"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center'
+                  }}
+                />
+              </div>
+            )}
+
+            {/* Right Small Image with Overlay */}
+            {property.images[2] && (
+              <div
+                onClick={() => openImageModal(property.images[2], 2)}
+                style={{
+                  position: 'relative',
+                  height: '100%',
+                  cursor: 'pointer',
+                  transition: 'transform 0.3s ease',
+                  borderRadius: '0 0 12px 0',
+                  overflow: 'hidden',
+                  background: '#f8f8f8'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.02)'
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = 'scale(1)'
+                }}
+              >
+                <img
+                  src={property.images[2]}
+                  alt="Property image 3"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center'
+                  }}
+                />
+                
+                {/* +3 More Overlay */}
+                {property.images.length > 3 && (
+                  <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    background: 'rgba(0, 0, 0, 0.6)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'white',
+                    textAlign: 'center',
+                    zIndex: 5
+                  }}>
+                    <div style={{
+                      fontSize: '1.2rem',
+                      fontWeight: 'bold',
+                      marginBottom: '0.75rem'
+                    }}>
+                      +{property.images.length - 3} More
+                    </div>
+                  </div>
+                )}
+                
+                {/* View photos button */}
+                {property.images.length > 3 && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setCurrentImageIndex(0);
+                      setSelectedImage(property.images[0]);
+                    }}
+                    style={{
+                      position: 'absolute',
+                      bottom: '8px',
+                      right: '8px',
+                      background: 'white',
+                      color: '#333',
+                      border: 'none',
+                      padding: '0.4rem 0.8rem',
+                      borderRadius: '6px',
+                      fontSize: '0.75rem',
                       fontWeight: '600',
                       cursor: 'pointer',
                       transition: 'all 0.3s ease',
@@ -913,7 +1362,7 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
               fontWeight: '600',
               fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
             }}>
-              Send Inquiry
+              Send Us a Message
             </h3>
             <p style={{
               fontSize: '0.9rem',
@@ -921,7 +1370,7 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
               marginBottom: '1.5rem',
               fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
             }}>
-              Get instant quotes and availability
+              We'd love to hear from you
             </p>
 
             {/* Selected Property Info */}
@@ -962,177 +1411,33 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
               flexDirection: 'column',
               gap: '1rem'
             }}>
-              <div 
-                className="form-grid"
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr 1fr',
-                  gap: '1rem'
-                }}>
-                <div>
-                  <label style={{
-                    display: 'block',
+              <div>
+                <label style={{
+                  display: 'block',
+                  fontSize: '0.9rem',
+                  fontWeight: '500',
+                  color: '#333',
+                  marginBottom: '0.5rem',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+                }}>Selected Property</label>
+                <input
+                  type="text"
+                  name="selectedProperty"
+                  value={inquiryForm.selectedProperty}
+                  readOnly
+                  disabled
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    border: '1px solid #d0d0d0',
+                    borderRadius: '6px',
                     fontSize: '0.9rem',
-                    fontWeight: '500',
-                    color: '#333',
-                    marginBottom: '0.5rem',
-                    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
-                  }}>Area *</label>
-                  <select
-                    name="area"
-                    value={inquiryForm.area}
-                    onChange={handleInquiryChange}
-                    required
-                    style={{
-                      width: '100%',
-                      padding: '0.75rem',
-                      border: '1px solid #d0d0d0',
-                      borderRadius: '6px',
-                      fontSize: '0.9rem',
-                      color: inquiryForm.area ? '#333' : '#999',
-                      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
-                    }}
-                  >
-                    <option value="">Select Area</option>
-                    <option value="noida">Noida</option>
-                    <option value="gurgaon">Gurgaon</option>
-                    <option value="delhi">Delhi</option>
-                  </select>
-                </div>
-                <div>
-                  <label style={{
-                    display: 'block',
-                    fontSize: '0.9rem',
-                    fontWeight: '500',
-                    color: '#333',
-                    marginBottom: '0.5rem',
-                    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
-                  }}>Event Date *</label>
-                  <input
-                    type="date"
-                    name="eventDate"
-                    value={inquiryForm.eventDate}
-                    onChange={handleInquiryChange}
-                    required
-                    style={{
-                      width: '100%',
-                      padding: '0.75rem',
-                      border: '1px solid #d0d0d0',
-                      borderRadius: '6px',
-                      fontSize: '0.9rem',
-                      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
-                    }}
-                  />
-                </div>
-              </div>
-
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: '1rem'
-              }}>
-                <div>
-                  <label style={{
-                    display: 'block',
-                    fontSize: '0.9rem',
-                    fontWeight: '500',
-                    color: '#333',
-                    marginBottom: '0.5rem'
-                  }}>Guests *</label>
-                  <input
-                    type="number"
-                    name="guests"
-                    value={inquiryForm.guests}
-                    onChange={handleInquiryChange}
-                    required
-                    placeholder="50"
-                    style={{
-                      width: '100%',
-                      padding: '0.75rem',
-                      border: '1px solid #d0d0d0',
-                      borderRadius: '6px',
-                      fontSize: '0.9rem'
-                    }}
-                  />
-                </div>
-                <div>
-                  <label style={{
-                    display: 'block',
-                    fontSize: '0.9rem',
-                    fontWeight: '500',
-                    color: '#333',
-                    marginBottom: '0.5rem'
-                  }}>Mobile *</label>
-                  <input
-                    type="tel"
-                    name="mobile"
-                    value={inquiryForm.mobile}
-                    onChange={handleInquiryChange}
-                    required
-                    placeholder="9876543210"
-                    style={{
-                      width: '100%',
-                      padding: '0.75rem',
-                      border: '1px solid #d0d0d0',
-                      borderRadius: '6px',
-                      fontSize: '0.9rem'
-                    }}
-                  />
-                </div>
-              </div>
-
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: '1rem'
-              }}>
-                <div>
-                  <label style={{
-                    display: 'block',
-                    fontSize: '0.9rem',
-                    fontWeight: '500',
-                    color: '#333',
-                    marginBottom: '0.5rem'
-                  }}>Name *</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={inquiryForm.name}
-                    onChange={handleInquiryChange}
-                    required
-                    placeholder="John Doe"
-                    style={{
-                      width: '100%',
-                      padding: '0.75rem',
-                      border: '1px solid #d0d0d0',
-                      borderRadius: '6px',
-                      fontSize: '0.9rem'
-                    }}
-                  />
-                </div>
-                <div>
-                  <label style={{
-                    display: 'block',
-                    fontSize: '0.9rem',
-                    fontWeight: '500',
-                    color: '#333',
-                    marginBottom: '0.5rem'
-                  }}>Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={inquiryForm.email}
-                    onChange={handleInquiryChange}
-                    placeholder="john@example.com"
-                    style={{
-                      width: '100%',
-                      padding: '0.75rem',
-                      border: '1px solid #d0d0d0',
-                      borderRadius: '6px',
-                      fontSize: '0.9rem'
-                    }}
-                  />
-                </div>
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+                    background: '#f5f5f5',
+                    color: '#666',
+                    cursor: 'not-allowed'
+                  }}
+                />
               </div>
 
               <div>
@@ -1141,14 +1446,186 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
                   fontSize: '0.9rem',
                   fontWeight: '500',
                   color: '#333',
-                  marginBottom: '0.5rem'
+                  marginBottom: '0.5rem',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+                }}>Full Name *</label>
+                <input
+                  type="text"
+                  name="fullName"
+                  value={inquiryForm.fullName}
+                  onChange={handleInquiryChange}
+                  required
+                  placeholder="Enter your full name"
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    border: '1px solid #d0d0d0',
+                    borderRadius: '6px',
+                    fontSize: '0.9rem',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+                  }}
+                />
+              </div>
+
+              <div>
+                <label style={{
+                  display: 'block',
+                  fontSize: '0.9rem',
+                  fontWeight: '500',
+                  color: '#333',
+                  marginBottom: '0.5rem',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+                }}>Phone Number *</label>
+                <input
+                  type="tel"
+                  name="phoneNumber"
+                  value={inquiryForm.phoneNumber}
+                  onChange={handleInquiryChange}
+                  required
+                  placeholder="Enter 10-digit phone number"
+                  maxLength={10}
+                  pattern="[0-9]{10}"
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    border: '1px solid #d0d0d0',
+                    borderRadius: '6px',
+                    fontSize: '0.9rem',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+                  }}
+                />
+              </div>
+
+              <div>
+                <label style={{
+                  display: 'block',
+                  fontSize: '0.9rem',
+                  fontWeight: '500',
+                  color: '#333',
+                  marginBottom: '0.5rem',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+                }}>Email Address *</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={inquiryForm.email}
+                  onChange={handleInquiryChange}
+                  required
+                  placeholder="Enter your email address"
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    border: '1px solid #d0d0d0',
+                    borderRadius: '6px',
+                    fontSize: '0.9rem',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+                  }}
+                />
+              </div>
+
+              <div>
+                <label style={{
+                  display: 'block',
+                  fontSize: '0.9rem',
+                  fontWeight: '500',
+                  color: '#333',
+                  marginBottom: '0.5rem',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+                }}>Number of Guests</label>
+                <select
+                  name="numberOfGuests"
+                  value={inquiryForm.numberOfGuests}
+                  onChange={handleInquiryChange}
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    border: '1px solid #d0d0d0',
+                    borderRadius: '6px',
+                    fontSize: '0.9rem',
+                    color: inquiryForm.numberOfGuests ? '#333' : '#999',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+                  }}
+                >
+                  <option value="">Select guests</option>
+                  <option value="1-5">1-5</option>
+                  <option value="6-10">6-10</option>
+                  <option value="11-20">11-20</option>
+                  <option value="21-30">21-30</option>
+                  <option value="31-50">31-50</option>
+                  <option value="50+">50+</option>
+                </select>
+              </div>
+
+              <div>
+                <label style={{
+                  display: 'block',
+                  fontSize: '0.9rem',
+                  fontWeight: '500',
+                  color: '#333',
+                  marginBottom: '0.5rem',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+                }}>Check-in Date *</label>
+                <input
+                  type="date"
+                  name="checkInDate"
+                  value={inquiryForm.checkInDate}
+                  onChange={handleInquiryChange}
+                  required
+                  placeholder="dd/mm/yyyy"
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    border: '1px solid #d0d0d0',
+                    borderRadius: '6px',
+                    fontSize: '0.9rem',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+                  }}
+                />
+              </div>
+
+              <div>
+                <label style={{
+                  display: 'block',
+                  fontSize: '0.9rem',
+                  fontWeight: '500',
+                  color: '#333',
+                  marginBottom: '0.5rem',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+                }}>Check-out Date *</label>
+                <input
+                  type="date"
+                  name="checkOutDate"
+                  value={inquiryForm.checkOutDate}
+                  onChange={handleInquiryChange}
+                  required
+                  placeholder="dd/mm/yyyy"
+                  min={inquiryForm.checkInDate}
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    border: '1px solid #d0d0d0',
+                    borderRadius: '6px',
+                    fontSize: '0.9rem',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+                  }}
+                />
+              </div>
+
+              <div>
+                <label style={{
+                  display: 'block',
+                  fontSize: '0.9rem',
+                  fontWeight: '500',
+                  color: '#333',
+                  marginBottom: '0.5rem',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
                 }}>Message</label>
                 <textarea
                   name="message"
                   value={inquiryForm.message}
                   onChange={handleInquiryChange}
-                  rows={3}
-                  placeholder="Any specific requirements..."
+                  rows={4}
+                  placeholder="Tell us about your requirements..."
                   style={{
                     width: '100%',
                     padding: '0.75rem',
@@ -1156,7 +1633,8 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
                     borderRadius: '6px',
                     fontSize: '0.9rem',
                     resize: 'vertical',
-                    minHeight: '80px'
+                    minHeight: '80px',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
                   }}
                 />
               </div>
@@ -1173,7 +1651,8 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
                   fontSize: '1rem',
                   fontWeight: '600',
                   cursor: 'pointer',
-                  transition: 'all 0.3s ease'
+                  transition: 'all 0.3s ease',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
                 }}
                 onMouseOver={(e) => {
                   e.currentTarget.style.background = '#2D3748'
@@ -1182,7 +1661,7 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
                   e.currentTarget.style.background = '#4A5568'
                 }}
               >
-                Send Inquiry
+                Send Us a Message
               </button>
             </form>
           </div>
@@ -1200,9 +1679,25 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
           totalImages={property.images.length}
         />
       )}
+
+      {/* Success Modal */}
+      <SuccessModal 
+        isOpen={showSuccessModal} 
+        onClose={() => setShowSuccessModal(false)} 
+      />
       
       {/* Responsive Design */}
       <style jsx>{`
+        /* Hide mobile gallery by default */
+        .mobile-gallery {
+          display: none !important;
+        }
+        
+        /* Show desktop gallery by default */
+        .desktop-gallery {
+          display: grid !important;
+        }
+        
         @media (max-width: 1024px) {
           .property-layout {
             grid-template-columns: 1fr !important;
@@ -1226,24 +1721,30 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
             top: auto !important;
           }
           
+          /* Hide desktop gallery on mobile */
+          .desktop-gallery {
+            display: none !important;
+          }
+          
+          /* Show mobile gallery on mobile */
+          .mobile-gallery {
+            display: block !important;
+          }
+          
           .image-grid {
             grid-template-columns: 1fr !important;
             height: 300px !important;
           }
-          
-          .form-grid {
-            grid-template-columns: 1fr !important;
-          }
         }
         
         @media (min-width: 769px) and (max-width: 1200px) {
-          .image-gallery-container {
+          .desktop-gallery {
             height: 450px !important;
           }
         }
         
         @media (min-width: 1201px) {
-          .image-gallery-container {
+          .desktop-gallery {
             height: 500px !important;
           }
         }

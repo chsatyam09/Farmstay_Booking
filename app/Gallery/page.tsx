@@ -26,15 +26,16 @@ export default function GalleryPage() {
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundImage: 'url("/images/Property.png")',
+    backgroundImage: 'url("/Images/Aravali Farm Images/Born_FIre-1.png")',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     paddingLeft: '40px',      // left padding
     paddingRight: '40px',     // right padding
-    borderBottomLeftRadius: '20px',  // curve bottom-left
-    borderBottomRightRadius: '20px', // curve bottom-right
+    // borderBottomLeftRadius: '20px',  // curve bottom-left
+    // borderBottomRightRadius: '20px', // curve bottom-right
     overflow: 'hidden'        // ensures image respects the curve
+    
   }}
 >
 
@@ -81,17 +82,16 @@ export default function GalleryPage() {
               fontSize: 'clamp(2rem, 5vw, 3rem)',
               fontWeight: '600',
               marginBottom: '1rem',
-              textShadow: '2px 2px 4px rgba(0,0,0,0.7)'
+              textShadow: '2px 2px 4px rgba(255, 255, 255, 0.7)'
             }}>
-              Book Your Dream Vacation 
-            
+               Luxury Farmhouse in Gurgaon
             </h1>
             <p style={{
               fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
               opacity: 0.9,
-              textShadow: '1px 1px 2px rgba(0,0,0,0.7)'
+              textShadow: '1px 1px 2px rgba(0, 0, 0, 0.7)'
             }}>
-              Discover our premium farmhouse properties
+              Explore our luxury farmhouse with pool, lush lawns, and premium amenities for your perfect getaway
             </p>
           </div>
         </div>

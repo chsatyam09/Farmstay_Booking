@@ -172,6 +172,9 @@ html {
   
   .mobile-menu {
     display: flex !important;
+    position: absolute !important;
+    top: 80px !important;
+    right: 16px !important;
   }
 }
 

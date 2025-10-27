@@ -12,7 +12,7 @@ const Navigationforgallery = ({}: NavigationProps) => {
 
   const navItems = [
     // { name: 'Blogs', href: '#blogs' },
-    { name: 'Farmhouse', href: '/Gallery' },
+    { name: 'Farmhouse', href: '/farmhouse' },
     { name: 'Call us - +91 7903962473', href: '/contact' },
     ]
 
@@ -61,7 +61,7 @@ const Navigationforgallery = ({}: NavigationProps) => {
           <div>
             <Link href="/" style={{ display: 'flex', alignItems: 'center' }}>
               <img
-                src="/unnamed-removebg-preview.png"
+                src="/Images/Aravali Farm Images/Aravali logo.png"
                 alt="Aravali Farm Logo"
                 style={{
                   width: '200px',
@@ -170,17 +170,19 @@ const Navigationforgallery = ({}: NavigationProps) => {
           <div
             style={{
               position: 'absolute',
-              top: '100%',
-              left: 0,
-              right: 0,
+              top: '80px',
+              right: '16px',
+              width: 'auto',
+              minWidth: '120px',
               background: 'rgba(255, 255, 255, 0.98)',
               backdropFilter: 'blur(10px)',
               boxShadow: '0 8px 24px rgba(0, 0, 0, 0.08)',
-              borderBottom: '1px solid rgba(17, 17, 17, 0.08)',
-              padding: '1rem',
+              borderRadius: '8px',
+              padding: '0.5rem',
               display: 'flex',
               flexDirection: 'column',
-              gap: '1rem',
+              gap: '0.25rem',
+              zIndex: 1000,
             }}
             className="mobile-menu"
           >
@@ -190,35 +192,27 @@ const Navigationforgallery = ({}: NavigationProps) => {
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
                 style={{
-                  fontSize: '1rem',
+                  fontSize: '0.7rem',
                   fontFamily:
                     '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
                   fontWeight: '500',
                   color: '#111111',
                   textDecoration: 'none',
-                  padding: '0.75rem 1.5rem',
-                  borderRadius: '9999px',
-                  border: '1px solid #111111',
-                  background: 'transparent',
-                  transition: 'all 0.3s ease',
+                  padding: '0.4rem 0.8rem',
+                  borderRadius: '6px',
+                  transition: 'all 0.2s ease',
                   display: 'block',
-                  textAlign: 'center',
-                  margin: '0.5rem 0',
-                  minWidth: '120px'
+                  textAlign: 'left',
                 }}
                 onMouseOver={(e) => {
                   const target = e.target as HTMLAnchorElement
-                  target.style.background = 'white'
-                  target.style.border = '1px solid white'
+                  target.style.background = 'rgba(17, 17, 17, 0.05)'
                   target.style.color = '#111111'
-                  target.style.transform = 'translateY(-1px)'
                 }}
                 onMouseOut={(e) => {
                   const target = e.target as HTMLAnchorElement
                   target.style.background = 'transparent'
-                  target.style.border = '1px solid #111111'
                   target.style.color = '#111111'
-                  target.style.transform = 'translateY(0)'
                 }}
               >
                 {item.name}

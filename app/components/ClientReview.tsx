@@ -14,7 +14,7 @@ const ClientReview = () => {
       reviewer: "Dhruv Sharma",
       reviewText: "Rooms were super clean, beds comfy, and the vibe felt like our own home. Excellent value for money and great hospitality.",
       stars: "🌟 🌟 🌟 🌟 🌟",
-      image: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
+      image: "/Images/Aravali Farm Images/Hotel Images/google-1.jpeg",
       rating: 5
     },
     {
@@ -22,8 +22,17 @@ const ClientReview = () => {
       source: "MakeMyTrip",
       reviewer: "Rohan Anand",
       reviewText: "It's a wonderful place to stay with family. Nice ambience and greenery. Will definitely suggest this place to enjoy.",
-    stars: "🌟 🌟 🌟 🌟 🌟",
-      image: "https://upload.wikimedia.org/wikipedia/commons/2/2f/MakeMyTrip_Logo.svg",
+      stars: "🌟 🌟 🌟 🌟 🌟",
+      image: "/Images/Aravali Farm Images/Hotel Images/Make my trip.png",
+      rating: 5
+    },
+        {
+      id: 4,
+      source: "Agoda",
+      reviewer: "Priya Mehta",
+      reviewText: "Amazing property with excellent facilities. The pool area is fantastic and the staff is very accommodating. Perfect for celebrations.",
+      stars: "🌟 🌟 🌟 🌟 🌟",
+      image: "/Images/Aravali Farm Images/Hotel Images/Agoda_Logo_1.png",
       rating: 5
     },
     {
@@ -31,35 +40,27 @@ const ClientReview = () => {
       source: "Booking.com",
       reviewer: "Sihka Tyagi",
       reviewText: "Best farm-stay experience. Lots of greenery, a beautiful swimming pool, and a large spacious area. Everything is great about the place.",
-    stars: "🌟 🌟 🌟 🌟 🌟",
-      image: "https://upload.wikimedia.org/wikipedia/commons/e/e6/Booking.com_logo.svg",
+      stars: "🌟 🌟 🌟 🌟 🌟",
+      image: "/Images/Aravali Farm Images/Hotel Images/Booking-1.png",
       rating: 5
     },
-    {
-      id: 4,
-      source: "Agoda",
-      reviewer: "Priya Mehta",
-      reviewText: "Amazing property with excellent facilities. The pool area is fantastic and the staff is very accommodating. Perfect for celebrations.",
-    stars: "🌟 🌟 🌟 🌟 🌟",
-      image: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Agoda_logo.svg",
-      rating: 5
-    },
+
     {
       id: 5,
       source: "Airbnb",
       reviewer: "Amit Kumar",
       reviewText: "Exceptional service and beautiful location. Great for family outings and corporate events. Highly recommended for weekend getaways.",
-     stars: "🌟 🌟 🌟 🌟 🌟",
-      image: "https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_B%C3%A9lo.svg",
+      stars: "🌟 🌟 🌟 🌟 🌟",
+      image: "/Images/Aravali Farm Images/Hotel Images/Airbnb2.png",
       rating: 5
     },
     {
       id: 6,
-      source: "Vrbo",
+      source: "MakeMyTrip",
       reviewer: "Neha Singh",
       reviewText: "Lovely farmhouse with all modern amenities. The kids enjoyed the pool and lawn area. Will definitely come back again.",
-         stars: "🌟 🌟 🌟 🌟 🌟",
-      image: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Vrbo_logo.svg",
+      stars: "🌟 🌟 🌟 🌟 🌟",
+      image: "/Images/Aravali Farm Images/Hotel Images/Make my trip-2.png",
       rating: 5
     }
   ]
@@ -116,7 +117,7 @@ const ClientReview = () => {
           <h2
             style={{
               fontSize: 'clamp(2.5rem, 6vw, 4rem)',
-              color: '#111111',
+              color: '#000000ff',
               marginBottom: '0.5rem',
               letterSpacing: '0.05em',
               fontFamily: "'Dancing Script', cursive",
@@ -147,8 +148,8 @@ const ClientReview = () => {
               textAlign: 'center'
             }}
           >
-            Discover what our valued guests have to say about their memorable experiences – 
-            from exceptional hospitality to unforgettable celebrations and peaceful getaways.
+            Hear authentic stories and experiences shared by our happy guests.
+Their words reflect the memorable moments we strive to create every day.
           </p>
         </div>
 

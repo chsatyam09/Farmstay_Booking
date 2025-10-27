@@ -20,21 +20,49 @@ const ContactForm = () => {
     })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
-    alert('Thank you for your inquiry! We will contact you soon.')
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      eventType: '',
-      eventDate: '',
-      guests: '',
-      message: ''
-    })
+    
+    try {
+      // Prepare form data for web3forms
+      const formDataToSend = new FormData()
+      formDataToSend.append('access_key', '505625ac-de77-4afc-8da0-3ebf5c632d45')
+      formDataToSend.append('name', formData.name)
+      formDataToSend.append('email', formData.email)
+      formDataToSend.append('phone', formData.phone)
+      formDataToSend.append('eventType', formData.eventType)
+      formDataToSend.append('eventDate', formData.eventDate)
+      formDataToSend.append('guests', formData.guests)
+      formDataToSend.append('message', formData.message || 'No additional message')
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formDataToSend
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        console.log('Form submitted successfully:', data)
+        alert('Thank you for your inquiry! We will contact you soon.')
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          eventType: '',
+          eventDate: '',
+          guests: '',
+          message: ''
+        })
+      } else {
+        console.error('Form submission failed:', data)
+        alert('Failed to send message. Please try again later.')
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      alert('An error occurred. Please try again later.')
+    }
   }
 
   return (

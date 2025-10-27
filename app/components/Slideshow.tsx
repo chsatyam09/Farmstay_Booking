@@ -7,11 +7,14 @@ const Slideshow = () => {
 
   // Use your images from the public folder
   const slides = [
-    { image: '/WaterFountain1.jpg', alt: 'Garden Sitting Area' },
-    { image: '/King_Room61.jpg', alt: 'King Room' },
-    { image: '/LivingRoom31.jpg', alt: 'Living Room' },
-    { image: '/SittingArea21.jpg', alt: 'Pool Sitting Area' },
-    { image: '/TVunit.JPG', alt: 'Water Fountain' }
+    { image: '/Images/Aravali Farm Images/Property-1.png', alt: 'Property' },
+    { image: '/Images/Aravali Farm Images/property-2.jpg', alt: 'Property' },
+    { image: '/Images/Aravali Farm Images/Born_FIre-1.png', alt: 'Bonfire' },
+    { image: '/Images/Aravali Farm Images/Graden-1.png', alt: 'Garden' },
+    { image: '/Images/Aravali Farm Images/Pool-1.png', alt: 'Pool' },
+    { image: '/Images/Aravali Farm Images/Living Room 2.jpg', alt: 'Living Room' },
+    { image: '/Images/Aravali Farm Images/Serprate_Sitting_Area-1.png ', alt: 'Living Room' },
+    
   ]
 
   useEffect(() => {
@@ -28,7 +31,7 @@ const Slideshow = () => {
           key={index}
           className={`slide ${index === currentSlide ? 'active' : ''}`}
           style={{
-            backgroundImage: `url(${slide.image})`,
+            backgroundImage: `url('${slide.image}')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             position: 'absolute',
@@ -143,7 +146,7 @@ const Slideshow = () => {
   onMouseOut={(e) => {
     const target = e.target as HTMLButtonElement
     target.style.background = 'transparent'
-    target.style.color = '#e6e0e0ff'
+    target.style.color = '#fffdfdff'
     target.style.border = '1px solid white'
     target.style.transform = 'translateY(0) scale(1)'
     target.style.boxShadow = 'none'

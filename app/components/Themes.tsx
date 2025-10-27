@@ -4,42 +4,43 @@ import { useState } from 'react'
 
 const Themes = () => {
   const themes = [
-    {
-      id: 1,
-      title: "Birthday Celebration Venue",
-      subtitle: "Perfect for Memorable Birthdays",
-      description: "Celebrate your special day at our stunning venue. We offer a spacious area, delicious food, and a vibrant atmosphere, perfect for hosting unforgettable birthday parties with family and friends.",
-      image: "/images/birthday.jpeg",
-      buttonText: "BOOK YOUR PARTY",
-      layout: "left"
-    },
-    {
-      id: 2,
-      title: "Corporate Party",
-      subtitle: "The Perfect Venue for Your Next Corporate Event",
-      description: "Host your corporate party in the serene beauty of our farm. Enjoy open spaces, lush greenery, and a refreshing outdoor ambiance—ideal for team-building, celebrations, and company gatherings. Create lasting memories with your colleagues in a setting that blends nature and comfort perfectly.",
-      image: "/images/PoolLaw.jpeg",
-      buttonText: "BOOK SHOOT",
-      layout: "right"
-    },
-    {
-      id: 3,
-      title: "Bachelor Parties",
-      subtitle: "Celebrate the Groom-to-Be in Style",
-      description: "Make your bachelor party unforgettable at our beautiful farm. Enjoy wide-open spaces, fun outdoor activities, and a relaxed natural vibe—perfect for bonding with friends before the big day. Whether you want a lively celebration or a laid-back getaway, our farm offers the ideal setting for your ultimate pre-wedding bash.",
-      image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      buttonText: "PLAN EVENT",
-      layout: "left"
-    },
-    {
-      id: 4,
-      title: "Family & Friends Parties",
-      subtitle: "Celebrate Life’s Special Moments Together",
-      description: "Gather your loved ones and make memories that last at our scenic farm. Whether it’s a birthday, anniversary, reunion, or just a weekend get-together, our open spaces and peaceful surroundings create the perfect backdrop for fun, laughter, and togetherness. Enjoy nature, good food, and great company—all in one beautiful place.",
-      image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      buttonText: "JOIN SESSION",
-      layout: "right"
-    }
+   {
+  id: 1,
+  title: "Birthday Celebration Venue",
+  subtitle: "Birthday Parties for Loved Ones",
+  description: "Celebrate your Loved Ones special day with friends and family at our beautiful venue. Enjoy great food, fun vibes, and a perfect space for unforgettable memories.",
+  image: "/Images/Aravali Farm Images/Birthday-1.png",
+  buttonText: "BOOK YOUR PARTY",
+  layout: "left"
+},
+{
+  id: 2,
+  title: "Corporate Party",
+  subtitle: "Perfect for Office Events",
+  description: "Plan your next team party or office event in our peaceful outdoor venue. Relax, bond, and celebrate with your colleagues in a refreshing natural setting.",
+  image: "/Images/Aravali Farm Images/Pool-1.png",
+  buttonText: "BOOK SHOOT",
+  layout: "right"
+},
+{
+  id: 3,
+  title: "Bachelor Parties",
+  subtitle: "Celebrate Before the Big Day",
+  description: "Throw an amazing bachelor party with your friends. Enjoy open spaces, fun activities, and a chill vibe—perfect for your last celebration before marriage.",
+  image: "/Images/Aravali Farm Images/Beer.jpg",
+  buttonText: "PLAN EVENT",
+  layout: "left"
+},
+{
+  id: 4,
+  title: "Family & Friends Parties",
+  subtitle: "Fun Times with Your Favorite People",
+  description: "Spend quality time with family and friends at our scenic farm. Perfect for birthdays, reunions, or casual get-togethers—enjoy nature, good food, and great company.",
+  image: "/Images/Aravali Farm Images/property-2.jpg",
+  buttonText: "JOIN SESSION",
+  layout: "right"
+}
+
   ]
 
   return (
@@ -50,9 +51,9 @@ const Themes = () => {
           <h2
             style={{
               fontSize: 'clamp(2.5rem, 6vw, 4rem)',
-              color: '#111111',
+              color: '#000000',
               marginBottom: '0.5rem',
-              letterSpacing: '0.05em',
+              letterSpacing: '0.15em',
               fontFamily: "'Dancing Script', cursive",
               fontWeight: 600,
               marginTop: '0rem'
@@ -73,7 +74,7 @@ const Themes = () => {
           <p
             style={{
               fontSize: '1.125rem',
-              color: '#4b5563',
+              color: '#595959',
               lineHeight: '1.7',
               marginBottom: '2rem',
               width: '100%',
@@ -81,9 +82,8 @@ const Themes = () => {
               textAlign: 'center'
             }}
           >
-            Experience our beautiful property through various services – from
-            comfortable stays to memorable events, creative shoots to wellness
-            activities.
+            Experience unmatched comfort and 100% privacy at  beautifully curated farmhouse — 
+            perfect for parties, get-togethers, or a peaceful staycation.
           </p>
         </div>
 
@@ -141,7 +141,7 @@ const Themes = () => {
                     marginBottom: '0.5rem',
                     lineHeight: '1.2',
                     fontFamily: "'Dancing Script', cursive", // <--  Birthday Celebration Venue
-                    textShadow: '1px 1px 3px rgba(242, 10, 10, 0.2)',
+                    // textShadow: '1px 1px 3px rgba(242, 10, 10, 0.2)',
                   }}
                 >
                   {theme.title}
@@ -151,7 +151,7 @@ const Themes = () => {
 <h4
   style={{
     fontSize: '1.1rem',
-    color: '#464444ff', // soft grey
+    color: '#3f3f3f',
     marginBottom: '1.5rem',
     letterSpacing: '0.05em',
     textTransform: 'uppercase',
@@ -166,7 +166,7 @@ const Themes = () => {
                 <p
                   style={{
                     fontSize: '1.1rem',
-                    color: '#4b5563',
+                  color: '#595959',
                     lineHeight: '1.7',
                     marginBottom: '2rem',
                     maxWidth: '400px',
@@ -180,9 +180,9 @@ const Themes = () => {
                   {theme.description}
                 </p>
 
-           <button
+     <button
   style={{
-    background: 'linear-gradient(135deg, #000000ff 0%, #764ba2 100%)',
+    background: 'linear-gradient(135deg, #000000 0%, #595959 100%)',
     color: 'white',
     padding: '0.875rem 2.5rem',
     fontSize: '0.9rem',
@@ -195,45 +195,52 @@ const Themes = () => {
     position: 'relative',
     overflow: 'hidden',
     transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
-    boxShadow: '0 4px 15px rgba(102, 126, 234, 0.3)',
+    boxShadow: '0 4px 15px rgba(63, 63, 63, 0.3)',
     fontFamily: '"Poppins", sans-serif',
   }}
   onMouseOver={(e) => {
     const target = e.target as HTMLButtonElement
     target.style.transform = 'translateY(-3px) scale(1.05)'
-    target.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(22, 22, 22, 0.4)'
-    target.style.background = 'linear-gradient(135deg, #764ba2 0%, #101112ff 100%)'
+    target.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(63, 63, 63, 0.4)'
+    target.style.background = 'linear-gradient(135deg, #595959 0%, #000000 100%)'
     target.style.borderRadius = '40px' // shape morph effect
   }}
   onMouseOut={(e) => {
     const target = e.target as HTMLButtonElement
     target.style.transform = 'translateY(0) scale(1)'
-    target.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(22, 22, 22, 0.4)'
-    target.style.background = 'linear-gradient(135deg, #764ba2 0%, #101112ff 100%)'
+    target.style.boxShadow = '0 4px 15px rgba(63, 63, 63, 0.3)'
+    target.style.background = 'linear-gradient(135deg, #000000 0%, #595959 100%)'
     target.style.borderRadius = '50px' // reset shape
   }}
-                  onClick={(e) => {
-                    // Add shake effect
-                    const target = e.target as HTMLButtonElement
-                    target.style.animation = 'shake 0.5s ease-in-out'
-                    
-                    // Remove animation after it completes
-                    setTimeout(() => {
-                      target.style.animation = ''
-                    }, 500)
-                    
-                    // Open WhatsApp
-                    const message = `Hi! I'm interested in ${theme.title.toLowerCase()} at Aravali Farm. Please provide me with more details and availability.`
-                    window.open(
-                      `https://wa.me/917903962473?text=${encodeURIComponent(
-                        message
-                      )}`,
-                      '_blank'
-                    )
-                  }}
-                >
-                  {theme.buttonText}
-                </button>
+  onClick={(e) => {
+    const target = e.target as HTMLButtonElement
+    target.style.animation = 'shake 0.5s ease-in-out'
+
+    setTimeout(() => {
+      target.style.animation = ''
+    }, 500)
+
+    const message = `Hi! I'm interested in ${theme.title.toLowerCase()} at Aravali Farm. Please provide me with more details and availability.`
+    window.open(
+      `https://wa.me/917903962473?text=${encodeURIComponent(message)}`,
+      '_blank'
+    )
+  }}
+>
+  {theme.buttonText}
+</button>
+
+<style>
+{`
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+`}
+</style>
+
+
               </div>
             </div>
           ))}
