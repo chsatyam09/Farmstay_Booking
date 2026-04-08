@@ -6,7 +6,7 @@ import GurgaonHome from "./GurgaonHome";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen" style={{ margin: 0, padding: 0 }}>
+    <main className="min-h-screen" style={{ margin: 0, padding: 0, backgroundColor: '#f5f1eb' }}>
       {/* Navigation bar */}
       <Navigation />
 

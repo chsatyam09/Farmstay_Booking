@@ -1,8 +1,6 @@
 import Slideshow from "@/app/components/Slideshow";
-import PropertyPhotos from "@/app/components/PropertyPhotos";
-import Themes from "@/app/components/Themes";
-import ContentSections from "@/app/components/ContentSections";
-import ContactForm from "@/app/components/ContactForm";
+import PropertyGallery from "@/app/components/PropertyGallery";
+import TrustedBySection from "@/app/components/TrustedBy";
 import ClientReview from '@/app/components/ClientReview';
 import Footer from "@/app/components/Footer";
 import Navigation from '@/app/components/Navigation'
@@ -10,13 +8,11 @@ import Navigation from '@/app/components/Navigation'
 
 export default function GurgaonHome() {
   return (
-    <div style={{ margin: 0, padding: 0 }}>
+    <div style={{ margin: 0, padding: 0, backgroundColor: '#f5f1eb' }}>
       <Slideshow />
       <div style={{ marginTop: '2rem', position: 'relative', zIndex: 2 }}>
-        <PropertyPhotos />
-        <Themes />
-        {/* <ContentSections /> */}
-        {/* <ContactForm /> */}
+        <PropertyGallery />
+        <TrustedBySection />
         <ClientReview />
         <Footer />
       </div>

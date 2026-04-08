@@ -6,31 +6,82 @@ export default function PropertyPhotos() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null)
 
   const propertyImages = [
-    
-    '/Images/Aravali Farm Images/property-2.jpg',
-    '/Images/Aravali Farm Images/Living Room 2.jpg',
-      '/Images/Aravali Farm Images/Pool-1.png',
-       '/Images/Aravali Farm Images/Property-1.png',
-      '/Images/Aravali Farm Images/Graden-1.png',
-      '/Images/Aravali Farm Images/Serprate_Sitting_Area-1.png',
-       '/Images/Aravali Farm Images/Garden-3.jpg',
-      '/Images/Aravali Farm Images/Pool-2.png',
-    '/Images/Aravali Farm Images/King_Room1.jpg',
-    '/Images/Aravali Farm Images/King_Room8.jpg',
-    '/Images/Aravali Farm Images/Delux_Room1.jpg',
-    '/Images/Aravali Farm Images/Standard_Room1.jpg',
-     '/Images/Aravali Farm Images/Birthday-1.png',
-
-    '/Images/Aravali Farm Images/pool_Sitting-3.jpg',
-    '/Images/Aravali Farm Images/Living Room 3.jpg',
-    '/Images/Aravali Farm Images/Serprate_Sitting_Area-2.jpg',
-    '/Images/Aravali Farm Images/Garden-2.jpg',
-    '/Images/Aravali Farm Images/Washroom2.jpg',
+    { 
+      src: '/Images/Aravali Farm Images/property-2.jpg', 
+      alt: 'Luxury Farmhouse in Gurgaon - Exterior View of Premium Property' 
+    },
+    { 
+      src: '/Images/Aravali Farm Images/Living Room 2.jpg', 
+      alt: 'Farmhouse Living Room in Gurgaon - Modern and Spacious Interior' 
+    },
+    { 
+      src: '/Images/Aravali Farm Images/Pool-1.png', 
+      alt: 'Farmhouse with Pool in Gurgaon - Private Swimming Pool for Pool Parties' 
+    },
+    { 
+      src: '/Images/Aravali Farm Images/Property-1.png', 
+      alt: 'Luxury Farmhouse in Gurgaon - Beautiful Property with Lush Green Lawn' 
+    },
+    { 
+      src: '/Images/Aravali Farm Images/Graden-1.png', 
+      alt: 'Farmhouse Garden in Gurgaon - Beautiful Outdoor Space for Events' 
+    },
+    { 
+      src: '/Images/Aravali Farm Images/Serprate_Sitting_Area-1.png', 
+      alt: 'Farmhouse Sitting Area in Gurgaon - Separate Indoor Space for Relaxation' 
+    },
+    { 
+      src: '/Images/Aravali Farm Images/Garden-3.jpg', 
+      alt: 'Farmhouse Garden Area in Gurgaon - Spacious Lawn for Outdoor Celebrations' 
+    },
+    { 
+      src: '/Images/Aravali Farm Images/Pool-2.png', 
+      alt: 'Farmhouse Pool Area in Gurgaon - Private Pool Perfect for Pool Parties' 
+    },
+    { 
+      src: '/Images/Aravali Farm Images/King_Room1.jpg', 
+      alt: 'King Room at Farmhouse in Gurgaon - Luxury Accommodation with Modern Amenities' 
+    },
+    { 
+      src: '/Images/Aravali Farm Images/King_Room8.jpg', 
+      alt: 'Premium King Room at Farmhouse in Gurgaon - Comfortable Stay Option' 
+    },
+    { 
+      src: '/Images/Aravali Farm Images/Delux_Room1.jpg', 
+      alt: 'Deluxe Room at Farmhouse in Gurgaon - Spacious Accommodation' 
+    },
+    { 
+      src: '/Images/Aravali Farm Images/Standard_Room1.jpg', 
+      alt: 'Standard Room at Farmhouse in Gurgaon - Comfortable and Well-Equipped' 
+    },
+    { 
+      src: '/Images/Aravali Farm Images/Birthday-1.png', 
+      alt: 'Farmhouse for Birthday Party in Gurgaon - Perfect Venue for Celebrations' 
+    },
+    { 
+      src: '/Images/Aravali Farm Images/pool_Sitting-3.jpg', 
+      alt: 'Pool Sitting Area at Farmhouse in Gurgaon - Relaxing Space by Pool' 
+    },
+    { 
+      src: '/Images/Aravali Farm Images/Living Room 3.jpg', 
+      alt: 'Farmhouse Living Room in Gurgaon - Elegant Interior Design' 
+    },
+    { 
+      src: '/Images/Aravali Farm Images/Serprate_Sitting_Area-2.jpg', 
+      alt: 'Separate Sitting Area at Farmhouse in Gurgaon - Private Indoor Space' 
+    },
+    { 
+      src: '/Images/Aravali Farm Images/Garden-2.jpg', 
+      alt: 'Farmhouse Garden in Gurgaon - Beautiful Outdoor Lawn Area' 
+    },
+    { 
+      src: '/Images/Aravali Farm Images/Washroom2.jpg', 
+      alt: 'Modern Washroom at Farmhouse in Gurgaon - Clean and Well-Maintained' 
+    },
   ]
 
-  const openModal = (image: string) => {
-    const index = propertyImages.indexOf(image)
-    setSelectedImageIndex(index)
+  const openModal = (imageIndex: number) => {
+    setSelectedImageIndex(imageIndex)
   }
 
   const closeModal = () => {
@@ -128,7 +179,7 @@ export default function PropertyPhotos() {
             {propertyImages.map((image, index) => (
               <div
                 key={index}
-                onClick={() => openModal(image)}
+                onClick={() => openModal(index)}
                 style={{
                   position: 'relative',
                   width: '100%',
@@ -153,8 +204,8 @@ export default function PropertyPhotos() {
                 }}
               >
                 <img
-                  src={image}
-                  alt={`Property ${index + 1}`}
+                  src={image.src}
+                  alt={image.alt}
                   style={{
                     width: '100%',
                     height: '100%',
@@ -348,8 +399,8 @@ export default function PropertyPhotos() {
 
           {/* Image - Max Screen Size */}
           <img
-            src={propertyImages[selectedImageIndex]}
-            alt={`Property ${selectedImageIndex + 1}`}
+            src={propertyImages[selectedImageIndex].src}
+            alt={propertyImages[selectedImageIndex].alt}
             style={{
               maxWidth: '100%',
               maxHeight: '100%',

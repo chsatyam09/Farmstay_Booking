@@ -393,7 +393,7 @@ export default function AmenitiesPage() {
           justifyContent: 'center',
           flexWrap: 'wrap'
         }}>
-          <Link href="/contact">
+          <Link href="/Gallery">
             <button style={{
               background: 'white',
               color: '#667eea',

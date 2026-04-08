@@ -1,19 +1,21 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import './Slideshow.css'
 
 const Slideshow = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
 
-  // Use your images from the public folder
+  // Use your images from the public folder with SEO-optimized alt tags
   const slides = [
-    { image: '/Images/Aravali Farm Images/Property-1.png', alt: 'Property' },
-    { image: '/Images/Aravali Farm Images/property-2.jpg', alt: 'Property' },
-    { image: '/Images/Aravali Farm Images/Born_FIre-1.png', alt: 'Bonfire' },
-    { image: '/Images/Aravali Farm Images/Graden-1.png', alt: 'Garden' },
-    { image: '/Images/Aravali Farm Images/Pool-1.png', alt: 'Pool' },
-    { image: '/Images/Aravali Farm Images/Living Room 2.jpg', alt: 'Living Room' },
-    { image: '/Images/Aravali Farm Images/Serprate_Sitting_Area-1.png ', alt: 'Living Room' },
+    { image: '/Images/Aravali Farm Images/Property-1.png', alt: 'Luxury Farmhouse in Gurgaon with Private Pool and Lush Green Lawn' },
+    { image: '/Images/Aravali Farm Images/property-2.jpg', alt: 'Farmhouse for Party in Gurgaon - Premium Venue for Celebrations' },
+    { image: '/Images/Aravali Farm Images/Born_FIre-1.png', alt: 'Farmhouse with Bonfire Setup in Delhi NCR - Perfect for Evening Gatherings' },
+    { image: '/Images/Aravali Farm Images/Graden-1.png', alt: 'Farmhouse with Garden in Gurgaon - Beautiful Outdoor Space for Events' },
+    { image: '/Images/Aravali Farm Images/Pool-1.png', alt: 'Farmhouse with Pool in Gurgaon - Private Swimming Pool for Pool Parties' },
+    { image: '/Images/Aravali Farm Images/Living Room 2.jpg', alt: 'Luxury Farmhouse Living Room in Gurgaon - Modern and Comfortable' },
+    { image: '/Images/Aravali Farm Images/Serprate_Sitting_Area-1.png ', alt: 'Farmhouse Sitting Area in Gurgaon - Spacious Indoor Space' },
     
   ]
 
@@ -54,8 +56,8 @@ const Slideshow = () => {
         </div>
       ))}
 
-      {/* Overlay content */}
-      <div style={{
+      {/* Overlay content - z-index ensures "Explore Farmhouse" link is clickable above slides */}
+      <div className="slideshow-overlay" style={{
         position: 'absolute',
         top: 0,
         left: 0,
@@ -63,106 +65,77 @@ const Slideshow = () => {
         bottom: 0,
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        zIndex: 2
       }}>
 
-<div style={{
-  textAlign: 'center',
-  color: 'white',
-  padding: '0 1rem'
-}}>
-  <div style={{ marginBottom: '1rem' }}>
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center'
-    }}>
-      <h1 style={{
-        // The font size remains large and responsive
-        fontSize: 'clamp(4rem, 7.5vw, 10rem)',
-        
-        // This is where the unique font is applied
-        // fontFamily: "'Fraunces', serif", // important 
-        
-        // Reducing letter-spacing to make the unique curves of the font stand out more
-        letterSpacing: '0.05em', 
-        
-        // A bold weight for impact
-        fontWeight: '700', 
-        
-        // Optional: Can use a variable font property for even more unique contrast
-        fontVariationSettings: "'opsz' 144, 'wght' 700" 
-      }}>
-        ARAVALI FARM
-      </h1>
+        <div className="slideshow-overlay-content" style={{
+          textAlign: 'center',
+          color: 'white',
+          padding: '0 1rem',
+          width: '100%',
+          maxWidth: '100%',
+          boxSizing: 'border-box'
+        }}>
+          <div style={{ marginBottom: '1rem' }}>
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center'
+            }}>
+              <h1 className="slideshow-hero-title" style={{
+                fontSize: 'clamp(2rem, 7.5vw, 10rem)',
+                letterSpacing: '0.05em',
+                fontWeight: '700',
+                fontVariationSettings: "'opsz' 144, 'wght' 700",
+                margin: 0,
+                lineHeight: 1.1
+              }}>
+                FarmStay Booking
+              </h1>
+            </div>
+          </div>
 
-      <div style={{
-        width: '21rem',
-        height: '0.5px',
-        background: '#ffffffff',
-        marginBottom: '1rem'
-      }}>
-
-      </div>
-
-      <p style={{
-        color: 'white',
-        fontSize: 'clamp(1rem, 4vw, 1.25rem)',
-        letterSpacing: '0.2em',
-        fontWeight: '300'
-      }}>
-        Luxury • Nature • Celebrations
-      </p>
-
-    </div>
-
-  </div>
-
-<button
-  style={{
-    background: 'transparent',
-    color: 'white',
-    marginTop: '3rem',
-    padding: '0.75rem 2.3rem',
-    fontSize: '1.125rem',
-    fontWeight: '300',
-    letterSpacing: '1.5px',
-    fontFamily: '"Poppins", "Helvetica Neue", Arial, sans-serif',
-    border: '1px solid #ffffffff',
-    cursor: 'pointer',
-    transition: 'all 0.4s ease',
-    borderRadius: '10px',
-    position: 'relative',
-    overflow: 'hidden',
-  }}
-  onMouseOver={(e) => {
-    const target = e.target as HTMLButtonElement
-    target.style.background = '#efe8e8ff'
-    target.style.color = 'black'
-    // target.style.border = '2px solid black'
-    target.style.transform = 'translateY(-4px) scale(1.05)'
-    target.style.boxShadow = '0 6px 20px rgba(255, 255, 255, 0.2)'
-  }}
-  onMouseOut={(e) => {
-    const target = e.target as HTMLButtonElement
-    target.style.background = 'transparent'
-    target.style.color = '#fffdfdff'
-    target.style.border = '1px solid white'
-    target.style.transform = 'translateY(0) scale(1)'
-    target.style.boxShadow = 'none'
-  }}
-
-  onClick={() => {
-    window.location.href = '/contact'
-  }}
->
-  Book Now
-</button>
-
-
-
+          <Link
+            href="/Gallery"
+            className="slideshow-explore-link"
+            style={{
+              background: 'transparent',
+              color: 'white',
+              marginTop: '1rem',
+              padding: '0.75rem 2.3rem',
+              fontSize: 'clamp(0.875rem, 2.5vw, 1.525rem)',
+              fontWeight: '100',
+              letterSpacing: '1.5px',
+              fontFamily: '"Poppins", "Helvetica Neue", Arial, sans-serif',
+              border: '1px solid #ffffffff',
+              cursor: 'pointer',
+              transition: 'all 0.4s ease',
+              borderRadius: '8px',
+              position: 'relative',
+              overflow: 'hidden',
+              textDecoration: 'none',
+              display: 'inline-block',
+            }}
+            onMouseOver={(e) => {
+              const target = e.target as HTMLAnchorElement
+              target.style.background = '#efe8e8ff'
+              target.style.color = 'black'
+              target.style.transform = 'translateY(-4px) scale(1.05)'
+              target.style.boxShadow = '0 6px 20px rgba(255, 255, 255, 0.2)'
+            }}
+            onMouseOut={(e) => {
+              const target = e.target as HTMLAnchorElement
+              target.style.background = 'transparent'
+              target.style.color = '#fffdfdff'
+              target.style.border = '1px solid white'
+              target.style.transform = 'translateY(0) scale(1)'
+              target.style.boxShadow = 'none'
+            }}
+          >
+            Explore Farmhouse
+          </Link>
         </div>
-
       </div>
 
       {/* Scroll Indicator */}

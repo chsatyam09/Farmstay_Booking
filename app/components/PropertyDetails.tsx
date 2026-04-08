@@ -17,12 +17,6 @@ interface Property {
   images: string[]
   description: string
   amenities: string[]
-  reviews: Array<{
-    name: string
-    rating: number
-    comment: string
-    date: string
-  }>
   faqs: Array<{
     question: string
     answer: string
@@ -32,52 +26,78 @@ interface Property {
 const propertyData: { [key: string]: Property } = {
   '1': {
     id: '1',
-    title: '2 BHK Crystal Farmhouse in Noida Sector 135 with Pool - FVB 116',
-    location: 'Noida · Sector 135',
-    price: '₹16,000',
-    bedrooms: 2,
-    bathrooms: 3,
+    title: '3 BHK Farmhouse With Swimming Pool In Gurgaon - OP-001',
+    location: 'Gurgaon Manesar',
+    price: 'Starting From ₹10,000 ',
+    bedrooms: 3,
+    bathrooms: 2,
     images: [
-      '/images/noida1.jpg',
-      '/King_Room61.jpg',
-      '/LivingRoom31.jpg',
-      '/SittingArea21.jpg',
-      '/Kitchen 2.JPG',
-      '/Pool WIth Water Front View .png',
-      '/WaterFountain1.jpg',
-      '/TVunit.JPG'
+      '/Images/FarmStay/Gurgaon farm/property-2.jpg',
+        '/Images/FarmStay/Gurgaon farm/Living Room 2.jpg',
+        '/Images/FarmStay/Gurgaon farm/Pool-1.png',
+      '/Images/FarmStay/Gurgaon farm/BornFire.png',
+      '/Images/FarmStay/Gurgaon farm/Born_FIre-1.png',
+      '/Images/FarmStay/Gurgaon farm/Born_FIre-1.png',
+      '/Images/FarmStay/Gurgaon farm/Graden-1.png',
+      '/Images/FarmStay/Gurgaon farm/Living Room 4.jpg',
+      '/Images/FarmStay/Gurgaon farm/Living room 7.jpg',
+      '/Images/FarmStay/Gurgaon farm/Living room 8.jpg',
+      '/Images/FarmStay/Gurgaon farm/Property-1.png',
+     '/Images/FarmStay/Gurgaon farm/King_Room7.jpg',
+      '/Images/FarmStay/Gurgaon farm/King_Room6.jpg',
+      '/Images/FarmStay/Gurgaon farm/Delux_Room3.jpg',
+ '/Images/FarmStay/Gurgaon farm/Room_2.png',
+ '/Images/FarmStay/Gurgaon farm/Room_1.png',
+  '/Images/FarmStay/Gurgaon farm/Standard_Room5.jpg',
+      '/Images/FarmStay/Gurgaon farm/Kitchen 2.jpg',
+      '/Images/FarmStay/Gurgaon farm/Kitchen 3.jpg',
+      '/Images/FarmStay/Gurgaon farm/Kitchen.jpeg',
+      '/Images/FarmStay/Gurgaon farm/Pool-1.png',
+      '/Images/FarmStay/Gurgaon farm/Pool-2.png',
+      '/Images/FarmStay/Gurgaon farm/Pool_Sitting-1.png',
+      '/Images/FarmStay/Gurgaon farm/Pool Decoration.jpeg',
+      '/Images/FarmStay/Gurgaon farm/Garden_2.png',
+      '/Images/FarmStay/Gurgaon farm/Graden-1.png',
+      '/Images/FarmStay/Gurgaon farm/Serprate_Sitting_Area-1.png',
+      '/Images/FarmStay/Gurgaon farm/BBQ-1.jpg',
+      '/Images/FarmStay/Gurgaon farm/Born_FIre-1.png',
+      '/Images/FarmStay/Gurgaon farm/Born_FIre_best.png',
+      '/Images/FarmStay/Gurgaon farm/BornFire.png',
+      '/Images/FarmStay/Gurgaon farm/Birthday-1.png',
+      '/Images/FarmStay/Gurgaon farm/Birthday Decoration.png',
+      '/Images/FarmStay/Gurgaon farm/Happy Client.jpg',
+      '/Images/FarmStay/Gurgaon farm/Happy_Client.jpg',
+      '/Images/FarmStay/Gurgaon farm/Happy-Client_3.jpg',
+      '/Images/FarmStay/Gurgaon farm/x.jpeg',
+            '/Images/FarmStay/Gurgaon farm/Washroom2.jpg',
+      '/Images/FarmStay/Gurgaon farm/Washroom9.JPG',
     ],
-    description: '2 BHK Crystal Farmhouse in Noida Sector 135 with Pool offers a perfect mix of luxury and comfort. This beautifully designed farmhouse comes with spacious bedrooms, modern interiors, a private swimming pool, and a lush green lawn. Located in a secure gated community, it provides peace, privacy, and premium facilities for families and gatherings. With excellent connectivity via Noida Expressway, it is ideal for weekend getaways, parties, and long stays.',
+    description: 'Experience Nature and comfort at this 3 BHK farmhouse in Gurgaon, featuring a large private swimming pool, bonfire area, and barbecue setup, along with premium amenities for a perfect getaway.This beautifully designed farmhouse offers spacious bedrooms, modern interiors, a lush green lawn, and a private swimming pool. Located in a secure gated community, it ensures peace, privacy, and safety—making it ideal for families, parties, celebrations, and social gatherings.With excellent connectivity via the Noida Expressway, the farmhouse is perfect for weekend getaways, private events, and long-term stays.',
     amenities: [
-      'Private Swimming Pool',
-      'Lush Green Lawn',
-      'Modern Kitchen',
-      'Air Conditioning',
-      'WiFi',
-      'Parking',
-      'Security',
-      'Garden View',
-      'BBQ Area',
-      'Entertainment System'
-    ],
-    reviews: [
-      {
-        name: 'Dhruv Sharma',
-        rating: 5,
-        comment: 'Rooms were super clean, beds comfy, and the vibe felt like our own home. Excellent value.',
-        date: '2 weeks ago'
-      },
-      {
-        name: 'Rohan Anand',
-        rating: 5,
-        comment: "It's a wonderful place to stay with family. Nice ambience and greenery. Will definitely suggest this place to enjoy.",
-        date: '1 month ago'
-      }
+   '🛏️ 3 Bedrooms with attached bathrooms & garden-view windows',
+'❄️ Split Air Conditioning in all rooms',
+'🏊 Private Swimming Pool (17 × 30 ft) with a 5–6 ft depth slope',
+'🔥 Bonfire and 🍖 Barbecue Setup',
+'🏞️ Gazebo Seating for 10–12 people',
+'📶 High-Speed Wi-Fi',
+'♨️ Geysers for hot water',
+'🍷 Wine Glasses available',
+'🧴 Fresh towels provided in every bedroom and washroom',
+'🍳 Fully equipped indoor kitchen with gas stove, microwave, RO system & double-door refrigerator',
+'🔊 Large JBL party speakers near the swimming pool',
+'🌳 Expansive garden area – ideal for outdoor games and events',
+'🎠 Kids’ play area',
+'👨‍💼 24/7 caretaker service',
+'🚗 Private parking for up to 6 cars inside the property',
+'🛌 Sleeping capacity: up to 15 guests',
+'🛋️ Extra sofa-cum-beds available',
+'🛏️ Extra mattresses & pillows available'
+
     ],
     faqs: [
       {
         question: 'What is the check-in and check-out time?',
-        answer: 'Check-in: 2:00 PM, Check-out: 12:00 PM'
+        answer: 'Check-in After: 1:00 PM, Check-out before: 11:00 AM'
       },
       {
         question: 'Is parking available?',
@@ -85,39 +105,101 @@ const propertyData: { [key: string]: Property } = {
       },
       {
         question: 'Are pets allowed?',
-        answer: 'Please contact the property owner for pet policy.'
+        answer: 'Yes, this porperty is pet Friendly.'
       },
       {
         question: 'Is the swimming pool private?',
         answer: 'Yes, the swimming pool is private and exclusively for guests.'
+      },
+       {
+        question: 'What is the maximum occupancy?',
+       answer: 'This property can accommodate up to 50-70 guests comfortably and has a comfortable sleeping capacity of 12–14 people.'
       }
     ]
   },
   '2': {
     id: '2',
-    title: '2 BHK Farmhouse Noida Sector 135 - FVB 101',
+    title: '2 BHK Farmhouse Noida Sector 135 - OP-001',
     location: 'Noida · Sector 135',
-    price: '₹18,000',
+     price: 'Starting From ₹10,000 ',
     bedrooms: 2,
-    bathrooms: 3,
+    bathrooms: 2,
     images: [
-      '/images/noida2.jpg',
-      '/King_Room6.JPG',
-      '/Living Room 3.JPG',
-      '/Sitting Area 2.JPG',
-      '/Kitchen 3.JPG',
-      '/Pool WIth Water Front View  (1).png'
+      '/Images/FarmStay/Noida Farm/Property_1.png',
+      '/Images/FarmStay/Noida Farm/Property_2.png',
+      '/Images/FarmStay/Noida Farm/Property_4.png',
+      '/Images/FarmStay/Noida Farm/Entrance.png',
+      '/Images/FarmStay/Noida Farm/Living Room.png',
+      '/Images/FarmStay/Noida Farm/living_room1.png',
+      '/Images/FarmStay/Noida Farm/Living_room2.png',
+      '/Images/FarmStay/Noida Farm/Living_room3.jpg',
+      '/Images/FarmStay/Noida Farm/Living_rrom.jpg',
+      '/Images/FarmStay/Noida Farm/RoomA1.png',
+      '/Images/FarmStay/Noida Farm/RoomA2.png',
+      '/Images/FarmStay/Noida Farm/RoomA3.png',
+      '/Images/FarmStay/Noida Farm/RoomA4.png',
+      '/Images/FarmStay/Noida Farm/RoomB1.png',
+      '/Images/FarmStay/Noida Farm/RoomB3.png',
+      '/Images/FarmStay/Noida Farm/Kitchen.jpg',
+      '/Images/FarmStay/Noida Farm/Washroom1.jpg',
+      '/Images/FarmStay/Noida Farm/Washroom-2.png',
+      '/Images/FarmStay/Noida Farm/pool.png',
+      '/Images/FarmStay/Noida Farm/Swimming_Pool_1.png',
+      '/Images/FarmStay/Noida Farm/Garden_1.png',
+      '/Images/FarmStay/Noida Farm/Garden_2.png',
+      '/Images/FarmStay/Noida Farm/TV_Stand .png',
+      '/Images/FarmStay/Noida Farm/Dinner_1.jpg',
+      '/Images/FarmStay/Noida Farm/Dinner_2.png',
     ],
-    description: 'A premium 2 BHK farmhouse with modern amenities and beautiful interiors. Perfect for family getaways and celebrations.',
-    amenities: ['Swimming Pool', 'Garden', 'Kitchen', 'AC', 'WiFi', 'Parking'],
-    reviews: [],
-    faqs: []
+    description: 'Experience Nature and comfort at this 2 BHK farmhouse in Noida Sector 135, featuring a large private swimming pool, bonfire area, and barbecue setup, along with premium amenities for a perfect getaway.This beautifully designed farmhouse offers spacious bedrooms, modern interiors, a lush green lawn, and a private swimming pool. Located in a secure gated community, it ensures peace, privacy, and safety—making it ideal for families, parties, celebrations, and social gatherings.With excellent connectivity via the NH-48, the farmhouse is perfect for weekend getaways, private events, and long-term stays.',
+    amenities: [
+   '🛏️ 2 Bedrooms with attached bathrooms & garden-view windows',
+'❄️ Split Air Conditioning in all rooms',
+'🏊 Private Swimming Pool (17 × 30 ft) with a 5–6 ft depth slope',
+'🔥 Bonfire and 🍖 Barbecue Setup',
+'📶 High-Speed Wi-Fi',
+'♨️ Geysers for hot water',
+'🍷 Wine Glasses available',
+'🧴 Fresh towels provided in every bedroom and washroom',
+'🍳 Fully equipped indoor kitchen with gas stove, microwave, RO system & double-door refrigerator',
+'🔊 Large JBL party speakers near the swimming pool',
+'🌳 Expansive garden area – ideal for outdoor games and events',
+'🎠 Kids’ play area',
+'👨‍💼 24/7 caretaker service',
+'🚗 Private parking for up to 6 cars inside the property',
+'🛌 Sleeping capacity: up to 10 guests',
+'🛋️ Extra sofa-cum-beds available',
+'🛏️ Extra mattresses & pillows available'
+
+    ],
+      faqs: [
+      {
+        question: 'What is the check-in and check-out time?',
+        answer: 'Check-in After: 1:00 PM, Check-out before: 11:00 AM'
+      },
+      {
+        question: 'Is parking available?',
+        answer: 'Yes, free parking is available for guests.'
+      },
+      {
+        question: 'Are pets allowed?',
+        answer: 'Yes, this porperty is pet Friendly.'
+      },
+      {
+        question: 'Is the swimming pool private?',
+        answer: 'Yes, the swimming pool is private and exclusively for guests.'
+      },
+       {
+        question: 'What is the maximum occupancy?',
+       answer: 'This property can accommodate up to 50-70 guests comfortably and has a comfortable sleeping capacity of 12–14 people.'
+      }
+    ]
   },
   '3': {
     id: '3',
     title: '2 BHK Green Beauty Farmhouse Noida Sector 135 - FVB 103',
     location: 'Noida · Sector 135',
-    price: '₹18,000',
+    price: 'Starting From ₹10,000 ',
     bedrooms: 2,
     bathrooms: 2,
     images: [
@@ -128,14 +210,30 @@ const propertyData: { [key: string]: Property } = {
     ],
     description: 'Green Beauty Farmhouse offers a serene environment with lush greenery and modern facilities.',
     amenities: ['Garden View', 'Kitchen', 'AC', 'WiFi', 'Parking'],
-    reviews: [],
-    faqs: []
+    faqs: [
+      {
+        question: 'What is the check-in and check-out time?',
+        answer: 'Check-in: 1:00 PM, Check-out: 12:00 PM'
+      },
+      {
+        question: 'Is parking available?',
+        answer: 'Yes, parking is available for guests.'
+      },
+      {
+        question: 'What amenities are included?',
+        answer: 'The property includes garden view, fully equipped kitchen, air conditioning, high-speed WiFi, and secure parking.'
+      },
+      {
+        question: 'Is the garden area accessible?',
+        answer: 'Yes, guests have full access to the beautiful garden area for relaxation and outdoor activities.'
+      }
+    ]
   },
   '4': {
     id: '4',
     title: '3 BHK Luxury Farmhouse Noida Sector 135 - FVB 104',
     location: 'Noida · Sector 135',
-    price: '₹22,000',
+    price: 'Starting From ₹10,000 ',
     bedrooms: 3,
     bathrooms: 3,
     images: [
@@ -162,20 +260,6 @@ const propertyData: { [key: string]: Property } = {
       'Entertainment System',
       'Dining Area'
     ],
-    reviews: [
-      {
-        name: 'Priya Mehta',
-        rating: 5,
-        comment: 'Amazing property with excellent facilities. The pool area is fantastic and the staff is very accommodating. Perfect for celebrations.',
-        date: '1 week ago'
-      },
-      {
-        name: 'Rajesh Kumar',
-        rating: 5,
-        comment: 'Spacious and well-maintained property. Great for family gatherings and corporate events.',
-        date: '2 weeks ago'
-      }
-    ],
     faqs: [
       {
         question: 'What is the maximum occupancy?',
@@ -195,7 +279,7 @@ const propertyData: { [key: string]: Property } = {
     id: '5',
     title: '2 BHK Premium Farmhouse with Garden - FVB 105',
     location: 'Noida · Sector 135',
-    price: '₹20,000',
+    price: 'Starting From ₹10,000 ',
     bedrooms: 2,
     bathrooms: 2,
     images: [
@@ -219,14 +303,6 @@ const propertyData: { [key: string]: Property } = {
       'BBQ Area',
       'Entertainment System'
     ],
-    reviews: [
-      {
-        name: 'Amit Kumar',
-        rating: 5,
-        comment: 'Exceptional service and beautiful location. Great for family outings and corporate events. Highly recommended for weekend getaways.',
-        date: '3 days ago'
-      }
-    ],
     faqs: [
       {
         question: 'Is the garden private?',
@@ -242,7 +318,7 @@ const propertyData: { [key: string]: Property } = {
     id: '6',
     title: '4 BHK Grand Farmhouse with Pool & Lawn - FVB 106',
     location: 'Noida · Sector 135',
-    price: '₹35,000',
+    price: 'Starting From ₹10,000 ',
     bedrooms: 4,
     bathrooms: 4,
     images: [
@@ -269,20 +345,6 @@ const propertyData: { [key: string]: Property } = {
       'Entertainment Systems',
       'Multiple Dining Areas',
       'Event Space'
-    ],
-    reviews: [
-      {
-        name: 'Neha Singh',
-        rating: 5,
-        comment: 'Lovely farmhouse with all modern amenities. The kids enjoyed the pool and lawn area. Will definitely come back again.',
-        date: '5 days ago'
-      },
-      {
-        name: 'Vikram Joshi',
-        rating: 5,
-        comment: 'Perfect venue for our corporate retreat. Spacious, well-maintained, and excellent hospitality.',
-        date: '1 week ago'
-      }
     ],
     faqs: [
       {
@@ -328,14 +390,6 @@ const propertyData: { [key: string]: Property } = {
       'Smart TV Systems',
       'Conference Facilities'
     ],
-    reviews: [
-      {
-        name: 'Arjun Kapoor',
-        rating: 5,
-        comment: 'Excellent property for business meetings and executive retreats. Professional service and modern facilities.',
-        date: '2 days ago'
-      }
-    ],
     faqs: [
       {
         question: 'Does it have conference facilities?',
@@ -351,6 +405,101 @@ const propertyData: { [key: string]: Property } = {
       }
     ]
   }
+}
+
+// FAQ Item Component
+function FAQItem({ question, answer }: { question: string; answer: string }) {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <div style={{
+      border: '1px solid #e5e7eb',
+      borderRadius: '8px',
+      overflow: 'hidden',
+      transition: 'all 0.3s ease'
+    }}>
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        style={{
+          width: '100%',
+          padding: '1rem 1.25rem',
+          background: isOpen ? '#f9fafb' : 'white',
+          border: 'none',
+          textAlign: 'left',
+          cursor: 'pointer',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          transition: 'all 0.3s ease',
+          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+        }}
+        onMouseOver={(e) => {
+          if (!isOpen) {
+            e.currentTarget.style.background = '#f9fafb'
+          }
+        }}
+        onMouseOut={(e) => {
+          if (!isOpen) {
+            e.currentTarget.style.background = 'white'
+          }
+        }}
+      >
+        <span style={{
+          fontSize: '1rem',
+          fontWeight: '600',
+          color: '#1f2937',
+          flex: 1,
+          paddingRight: '1rem'
+        }}>
+          {question}
+        </span>
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          style={{
+            transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+            transition: 'transform 0.3s ease',
+            color: '#6b7280',
+            flexShrink: 0
+          }}
+        >
+          <path d="M6 9l6 6 6-6" />
+        </svg>
+      </button>
+      {isOpen && (
+        <div style={{
+          padding: '1rem 1.25rem',
+          background: '#f9fafb',
+          borderTop: '1px solid #e5e7eb',
+          fontSize: '0.95rem',
+          lineHeight: '1.6',
+          color: '#4b5563',
+          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+          animation: 'fadeIn 0.3s ease'
+        }}>
+          {answer}
+        </div>
+      )}
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+    </div>
+  )
 }
 
 // Success Modal Component
@@ -720,22 +869,38 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
 
   return (
     <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 0.5rem', paddingTop: '0' }}>
+      {/* Farm House details screen Header */}
 
+      {/* <div style={{
+        textAlign: 'center',
+        marginBottom: '2rem',
+        paddingTop: '2rem'
+      }}>
+        <h2 style={{
+          fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
+          fontWeight: '600',
+          color: '#111827',
+          fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+        }}>
+          Farm House details screen
+        </h2>
+      </div> */}
 
       {/* Back Button */}
-      <div style={{ marginBottom: '1rem', marginTop: '0', paddingTop: '2rem' }}>
+      
+      <div style={{ marginBottom: '1rem', marginTop: '0', paddingTop: '1rem' }}>
         <button
           onClick={() => window.history.back()}
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '0.5rem',
+            gap: '0.3rem',
             background: 'transparent',
-            border: '2px solid #111111',
-            borderRadius: '8px',
-            padding: '0.75rem 1.5rem',
+            border: '1px solid #111111',
+            borderRadius: '6px',
+            padding: '0.4rem 0.8rem',
             color: '#111111',
-            fontSize: '1rem',
+            fontSize: '0.75rem',
             fontWeight: '500',
             cursor: 'pointer',
             transition: 'all 0.3s ease',
@@ -753,8 +918,8 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
           }}
         >
           <svg
-            width="20"
-            height="20"
+            width="12"
+            height="8"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -768,6 +933,171 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
         </button>
 
       
+      </div>
+
+      {/* Property Header Section */}
+      <div style={{ marginBottom: '2rem' }}>
+        {/* Property Title */}
+        <h1 style={{
+          fontSize: 'clamp(1.5rem, 4vw, 2rem)',
+          fontWeight: '700',
+          color: '#1f2937',
+          marginBottom: '0.75rem',
+          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+          lineHeight: '1.2'
+        }}>
+          {property.title}
+        </h1>
+
+        {/* Location */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.5rem',
+          marginBottom: '1.5rem',
+          color: '#6b7280',
+          fontSize: '0.95rem',
+          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+        }}>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          {property.location}
+        </div>
+
+        {/* Feature Tags */}
+        <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '0.75rem',
+          alignItems: 'center'
+        }}>
+          {/* Farmhouse Tag */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            padding: '0.5rem 1rem',
+            background: '#f3f4f6',
+            borderRadius: '8px',
+            fontSize: '0.875rem',
+            color: '#374151',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+          }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            Farmhouse
+          </div>
+
+          {/* Bedrooms Tag */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            padding: '0.5rem 1rem',
+            background: '#f3f4f6',
+            borderRadius: '8px',
+            fontSize: '0.875rem',
+            color: '#374151',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+          }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="9" y1="3" x2="9" y2="21"></line>
+            </svg>
+            {property.bedrooms} Bedrooms
+          </div>
+
+          {/* Bathrooms Tag */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            padding: '0.5rem 1rem',
+            background: '#f3f4f6',
+            borderRadius: '8px',
+            fontSize: '0.875rem',
+            color: '#374151',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+          }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="9" y1="3" x2="9" y2="21"></line>
+              <line x1="3" y1="9" x2="21" y2="9"></line>
+            </svg>
+            {property.bathrooms} Bathrooms
+          </div>
+
+          {/* Swimming Pool Tag (if in amenities) */}
+          {property.amenities.some(a => a.toLowerCase().includes('pool')) && (
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              padding: '0.5rem 1rem',
+              background: '#f3f4f6',
+              borderRadius: '8px',
+              fontSize: '0.875rem',
+              color: '#374151',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+            }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              Swimming Pool
+            </div>
+          )}
+
+          {/* Guests Tag */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            padding: '0.5rem 1rem',
+            background: '#f3f4f6',
+            borderRadius: '8px',
+            fontSize: '0.875rem',
+            color: '#374151',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+          }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            12-25 Guests
+          </div>
+
+          {/* Price Tag */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            padding: '0.5rem 1rem',
+            background: '#dbeafe',
+            borderRadius: '8px',
+            fontSize: '0.875rem',
+            color: '#1e40af',
+            fontWeight: '600',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+          }}>
+            {property.price}/night
+          </div>
+        </div>
       </div>
 
       {/* Image Gallery - New Layout matching the image */}
@@ -1258,7 +1588,7 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
                 fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
               }}>
                 <div style={{ color: '#EF4444', fontSize: '1rem' }}>•</div>
-                Government approved ID required for all guests
+                 Music limit: No Outdoor/ Indoor Music Limit, Play Loud Music Non-Stop till Morning
               </div>
               <div style={{
                 display: 'flex',
@@ -1269,7 +1599,7 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
                 fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
               }}>
                 <div style={{ color: '#EF4444', fontSize: '1rem' }}>•</div>
-                Music limit: Outdoor till 11 PM, Indoor no limit
+                Any vomiting or damage to property will result in additional charges.
               </div>
               <div style={{
                 display: 'flex',
@@ -1280,24 +1610,40 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
                 fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
               }}>
                 <div style={{ color: '#EF4444', fontSize: '1rem' }}>•</div>
-                Refundable security deposit may apply
-              </div>
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.75rem',
-                fontSize: '0.95rem',
-                color: '#666',
-                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
-              }}>
-                <div style={{ color: '#EF4444', fontSize: '1rem' }}>•</div>
-                Check-in post 2 PM, Check-out before 11 AM
+                Check-in After 1 PM, Check-out before 11 AM
               </div>
             </div>
           </div>
 
+          {/* FAQs Section */}
+          {property.faqs && property.faqs.length > 0 && (
+            <div style={{
+              background: 'white',
+              borderRadius: '12px',
+              padding: '2rem',
+              boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
+              border: '1px solid #f0f0f0',
+              marginBottom: '2rem'
+            }}>
+              <h2 style={{
+                fontSize: '1.8rem',
+                color: '#333',
+                marginBottom: '1.5rem',
+                fontWeight: '600',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+              }}>
+                Frequently Asked Questions
+              </h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                {property.faqs.map((faq, index) => (
+                  <FAQItem key={index} question={faq.question} answer={faq.answer} />
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Nearby Areas & Attractions Section */}
-          <div style={{
+          {/* <div style={{
             background: 'white',
             borderRadius: '12px',
             padding: '2rem',
@@ -1312,7 +1658,7 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
               fontWeight: '600',
               fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
             }}>
-              Nearby Areas & Attractions
+           
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <div style={{
@@ -1338,7 +1684,8 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
                 Advant Navis Business Park Noida Sector 137
               </div>
             </div>
-          </div>
+          </div> */}
+
         </div>
 
         {/* Sidebar - Send Inquiry Form */}
@@ -1552,7 +1899,9 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
                   <option value="11-20">11-20</option>
                   <option value="21-30">21-30</option>
                   <option value="31-50">31-50</option>
-                  <option value="50+">50+</option>
+                  <option value="25-40">25-40</option>
+                  <option value="40-70">40-70</option>
+                  <option value="100+">100+</option>
                 </select>
               </div>
 

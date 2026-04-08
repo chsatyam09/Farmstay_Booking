@@ -23,8 +23,8 @@ const Navigation = ({}: NavigationProps) => {
 
   const navItems = [
     // { name: 'Blogs', href: '#blogs' },
-    { name: 'Farmhouse', href: '/farmhouse' },
-    { name: 'Call us - +91 7903962473', href: '/contact' },
+    { name: 'Farmhouse', href: '/Gallery' },
+    { name: 'Call us - +91 9211255393', href: '/contact' },
     
   ]
 
@@ -59,12 +59,13 @@ const Navigation = ({}: NavigationProps) => {
     >
       <div
         style={{
-          maxWidth: '1280px',
+          maxWidth: '1400px',// Space
           margin: '0 auto',
-          padding: '0 1rem',
+          padding: '0 1rem 0 1rem',
         }}
       >
         <div
+          className="nav-inner"
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -87,37 +88,27 @@ const Navigation = ({}: NavigationProps) => {
             </Link>
           </div> */}
 
-          <div>
-  <Link
-    href="/"
-    style={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '10px',
-      textDecoration: 'none',
-    }}
-    onClick={(e) => {
-      if (pathname === '/') {
-        e.preventDefault()
-        router.refresh()
-      }
-    }}
-  >
-    <img
-      src="/Images/Aravali Farm Images/Aravali logo.png"
-      alt="Aravali Farm Logo"
-      style={{
-        width: '200px', // made larger
-        height: 'auto',
-        objectFit: 'contain',
-        transition: 'transform 0.3s ease',
-      }}
-      onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-      onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-    />
-  </Link>
-</div>
+          {/* Logo - FarmStay logo on all pages */}
+          <div className="nav-logo" style={{
+            position: 'relative',
+            left: 0,
+            paddingLeft: '1rem',
+          }}>
+            <Link href="/" style={{ display: 'flex', alignItems: 'center' }}>
+              <img
+                src="/Images/FarmStay_logo.png"
+                alt="FarmStay Logo"
+                style={{
+                  width: '200px',
+                  height: 'auto',
+                  objectFit: 'contain',
+                  transition: 'transform 0.3s ease',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+              />
+            </Link>
+          </div>
 
           {/* Right side - nav links */}
           <div

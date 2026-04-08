@@ -160,7 +160,7 @@ html {
   letter-spacing: 0.1em;
 }
 
-/* Mobile Navigation Styles */
+/* Mobile Navigation Styles - pill container (FUTURE DESKS style) */
 @media (max-width: 768px) {
   .hidden-mobile {
     display: none !important;
@@ -173,8 +173,39 @@ html {
   .mobile-menu {
     display: flex !important;
     position: absolute !important;
-    top: 80px !important;
-    right: 16px !important;
+    top: calc(0.75rem + 56px + 0.5rem) !important;
+    right: 1rem !important;
+    width: auto !important;
+  }
+
+  /* Pill-shaped nav bar: transparent, thin border, centered */
+  nav .nav-inner {
+    width: calc(100% - 2rem);
+    max-width: 100%;
+    margin: 0.75rem auto;
+    padding: 0 1.25rem;
+    height: 56px !important;
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 9999px;
+    box-sizing: border-box;
+  }
+
+  /* Logo smaller; keep visible on dark (light logo on transparent) */
+  nav .nav-inner .nav-logo {
+    padding-left: 0 !important;
+  }
+  nav .nav-inner .nav-logo img {
+    width: 120px !important;
+    height: auto !important;
+  }
+
+  /* Hamburger white on transparent/dark background */
+  nav .nav-inner .mobile-menu-button button {
+    color: #ffffff !important;
+  }
+  nav .nav-inner .mobile-menu-button button svg {
+    color: #ffffff !important;
   }
 }
 

@@ -1,43 +1,48 @@
 'use client'
 
-import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 const Themes = () => {
+  const router = useRouter()
   const themes = [
    {
   id: 1,
-  title: "Birthday Celebration Venue",
-  subtitle: "Birthday Parties for Loved Ones",
-  description: "Celebrate your Loved Ones special day with friends and family at our beautiful venue. Enjoy great food, fun vibes, and a perfect space for unforgettable memories.",
+  title: "Farmhouse for Birthday Party in Gurgaon",
+  subtitle: "Best Birthday Venue in Delhi NCR",
+  description: "Perfect farmhouse for birthday party in Gurgaon with private pool, spacious lawns, and premium amenities. Book now for unforgettable celebrations.",
   image: "/Images/Aravali Farm Images/Birthday-1.png",
+  imageAlt: "Farmhouse for Birthday Party in Gurgaon - Best Birthday Celebration Venue with Private Pool",
   buttonText: "BOOK YOUR PARTY",
   layout: "left"
 },
 {
   id: 2,
-  title: "Corporate Party",
-  subtitle: "Perfect for Office Events",
-  description: "Plan your next team party or office event in our peaceful outdoor venue. Relax, bond, and celebrate with your colleagues in a refreshing natural setting.",
+  title: "Farmhouse for Corporate Party in Gurgaon",
+  subtitle: "Corporate Event Venue Near Delhi NCR",
+  description: "Premium farmhouse for corporate party in Gurgaon. Perfect for team building with modern amenities, private pool, and professional setup.",
   image: "/Images/Aravali Farm Images/Pool-1.png",
-  buttonText: "BOOK SHOOT",
+  imageAlt: "Farmhouse for Corporate Party in Gurgaon - Professional Event Venue with Pool and Modern Amenities",
+  buttonText: "BOOK EVENT",
   layout: "right"
 },
 {
   id: 3,
-  title: "Bachelor Parties",
-  subtitle: "Celebrate Before the Big Day",
-  description: "Throw an amazing bachelor party with your friends. Enjoy open spaces, fun activities, and a chill vibe—perfect for your last celebration before marriage.",
+  title: "Farmhouse for Bachelor Party in Gurgaon",
+  subtitle: "Ultimate Bachelor Party Venue Near Delhi",
+  description: "Best farmhouse for bachelor party in Gurgaon. Private pool, music until 4 AM, BBQ setup, and complete privacy. Perfect for your celebration.",
   image: "/Images/Aravali Farm Images/Beer.jpg",
+  imageAlt: "Farmhouse for Bachelor Party in Gurgaon - Ultimate Party Venue with Pool and Entertainment",
   buttonText: "PLAN EVENT",
   layout: "left"
 },
 {
   id: 4,
-  title: "Family & Friends Parties",
-  subtitle: "Fun Times with Your Favorite People",
-  description: "Spend quality time with family and friends at our scenic farm. Perfect for birthdays, reunions, or casual get-togethers—enjoy nature, good food, and great company.",
+  title: "Farmhouse for Family Get-Together in Gurgaon",
+  subtitle: "Family Celebration Venue in Delhi NCR",
+  description: "Perfect farmhouse for family get-together in Gurgaon. Spacious lawns, modern rooms, and all amenities for memorable family celebrations.",
   image: "/Images/Aravali Farm Images/property-2.jpg",
-  buttonText: "JOIN SESSION",
+  imageAlt: "Farmhouse for Family Get-Together in Gurgaon - Beautiful Family Celebration Venue with Garden",
+  buttonText: "BOOK NOW",
   layout: "right"
 }
 
@@ -47,19 +52,19 @@ const Themes = () => {
     <section id="themes" style={{ padding: '1rem 0', background: '#ffffff' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1rem' }}>
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: 'clamp(2rem, 5vw, 4rem)' }}>
           <h2
             style={{
-              fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+               fontSize: 'clamp(1.5rem, 3vw, 2.5rem)', // smaller than before
               color: '#000000',
               marginBottom: '0.5rem',
               letterSpacing: '0.15em',
               fontFamily: "'Dancing Script', cursive",
-              fontWeight: 600,
+              fontWeight: 300,
               marginTop: '0rem'
             }}
           >
-            What We Offer
+            Perfect Venues for Every Celebration in Gurgaon
           </h2>
 
           <div
@@ -73,31 +78,32 @@ const Themes = () => {
 
           <p
             style={{
-              fontSize: '1.125rem',
+              fontSize: 'clamp(0.9rem, 2vw, 1rem)',
               color: '#595959',
-              lineHeight: '1.7',
+              lineHeight: '1.6',
               marginBottom: '2rem',
               width: '100%',
               fontFamily: '"Poppins", "Helvetica Neue", Arial, sans-serif',
-              textAlign: 'center'
+              textAlign: 'center',
+              maxWidth: '700px',
+              margin: '0 auto 2rem'
             }}
           >
-            Experience unmatched comfort and 100% privacy at  beautifully curated farmhouse — 
-            perfect for parties, get-togethers, or a peaceful staycation.
+            Luxury farmhouse in Gurgaon perfect for parties, birthdays, corporate events, and weekend getaways near Delhi NCR.
           </p>
         </div>
 
         {/* Theme Cards */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '6rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(3rem, 6vw, 6rem)' }}>
           {themes.map((theme, index) => (
             <div
               key={theme.id}
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '3rem',
+                gap: 'clamp(1.5rem, 4vw, 3rem)',
                 flexDirection: theme.layout === 'right' ? 'row-reverse' : 'row',
-                minHeight: '400px'
+                minHeight: 'auto'
               }}
               className="theme-card"
             >
@@ -106,7 +112,7 @@ const Themes = () => {
                 style={{
                   flex: '1',
                   position: 'relative',
-                  height: '400px',
+                  height: 'clamp(250px, 40vw, 400px)',
                   borderRadius: '8px',
                   overflow: 'hidden',
                   boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
@@ -114,7 +120,7 @@ const Themes = () => {
               >
                 <img
                   src={theme.image}
-                  alt={theme.title}
+                  alt={theme.imageAlt || theme.title}
                   style={{
                     width: '100%',
                     height: '100%',
@@ -123,6 +129,7 @@ const Themes = () => {
                     transition: 'transform 0.3s ease'
                   }}
                   className="theme-image"
+                  loading="lazy"
                 />
               </div>
 
@@ -130,51 +137,44 @@ const Themes = () => {
               <div
                 style={{
                   flex: '1',
-                  padding: '2rem',
+                  padding: 'clamp(1rem, 3vw, 2rem)',
                   textAlign: theme.layout === 'right' ? 'right' : 'left'
                 }}
               >
                 <h3
                   style={{
-                    fontSize: 'clamp(1.8rem, 4vw, 2.8rem)',
+                    fontSize: 'clamp(1.3rem, 3vw, 2rem)',
                     color: '#000000ff',
                     marginBottom: '0.5rem',
                     lineHeight: '1.2',
-                    fontFamily: "'Dancing Script', cursive", // <--  Birthday Celebration Venue
-                    // textShadow: '1px 1px 3px rgba(242, 10, 10, 0.2)',
+                    fontFamily: "'Dancing Script', cursive",
                   }}
                 >
                   {theme.title}
                 </h3>
 
-
-<h4
-  style={{
-    fontSize: '1.1rem',
-    color: '#3f3f3f',
-    marginBottom: '1.5rem',
-    letterSpacing: '0.05em',
-    textTransform: 'uppercase',
-    fontWeight: '550',
-    fontFamily: '"Playfair Display", "Georgia", "Times New Roman", serif', //  Perfect for Memorable Birthdays
-    // fontFamily: '"Poppins", "Helvetica Neue", Arial, sans-serif',
-  }}
->
+                <h4
+                  style={{
+                    fontSize: 'clamp(0.85rem, 2vw, 1rem)',
+                    color: '#3f3f3f',
+                    marginBottom: '1rem',
+                    letterSpacing: '0.05em',
+                    textTransform: 'uppercase',
+                    fontWeight: '550',
+                    fontFamily: '"Playfair Display", "Georgia", "Times New Roman", serif',
+                  }}
+                >
                   {theme.subtitle}
                 </h4>
 
                 <p
                   style={{
-                    fontSize: '1.1rem',
-                  color: '#595959',
-                    lineHeight: '1.7',
-                    marginBottom: '2rem',
-                    maxWidth: '400px',
-                    margin:
-                      index % 2 === 1
-                        ? '0 0 2rem auto'
-                        : '0 0 2rem 0',
-                    fontFamily: 'Montserrat' //  Perfect for Memorable Birthdays
+                    fontSize: 'clamp(0.9rem, 2vw, 1rem)',
+                    color: '#595959',
+                    lineHeight: '1.6',
+                    marginBottom: '1.5rem',
+                    maxWidth: '100%',
+                    fontFamily: 'Montserrat'
                   }}
                 >
                   {theme.description}
@@ -184,8 +184,8 @@ const Themes = () => {
   style={{
     background: 'linear-gradient(135deg, #000000 0%, #595959 100%)',
     color: 'white',
-    padding: '0.875rem 2.5rem',
-    fontSize: '0.9rem',
+    padding: 'clamp(0.7rem, 2vw, 0.875rem) clamp(1.5rem, 4vw, 2.5rem)',
+    fontSize: 'clamp(0.75rem, 2vw, 0.9rem)',
     fontWeight: '600',
     letterSpacing: '0.05em',
     border: 'none',
@@ -197,6 +197,7 @@ const Themes = () => {
     transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
     boxShadow: '0 4px 15px rgba(63, 63, 63, 0.3)',
     fontFamily: '"Poppins", sans-serif',
+    width: 'fit-content',
   }}
   onMouseOver={(e) => {
     const target = e.target as HTMLButtonElement
@@ -220,11 +221,17 @@ const Themes = () => {
       target.style.animation = ''
     }, 500)
 
-    const message = `Hi! I'm interested in ${theme.title.toLowerCase()} at Aravali Farm. Please provide me with more details and availability.`
-    window.open(
-      `https://wa.me/917903962473?text=${encodeURIComponent(message)}`,
-      '_blank'
-    )
+    // If button text is "BOOK NOW", redirect to Gallery page
+    if (theme.buttonText === "BOOK NOW") {
+      router.push('/Gallery')
+    } else {
+      // For other buttons, keep WhatsApp functionality
+      const message = `Hi! I'm interested in booking ${theme.title} at Aravali Farm. Please provide me with more details, pricing, and availability.`
+      window.open(
+        `https://wa.me/917903962473?text=${encodeURIComponent(message)}`,
+        '_blank'
+      )
+    }
   }}
 >
   {theme.buttonText}
@@ -261,20 +268,74 @@ const Themes = () => {
             flex-direction: column !important;
             gap: 2rem !important;
           }
+          
+          div[style*='height: clamp(250px, 40vw, 400px)'] {
+            height: 300px !important;
+          }
         }
 
         @media (max-width: 768px) {
+          div[style*='flex-direction: row'],
+          div[style*='flex-direction: row-reverse'] {
+            flex-direction: column !important;
+            gap: 1.5rem !important;
+          }
+          
+          div[style*='height: clamp(250px, 40vw, 400px)'] {
+            height: 250px !important;
+          }
+          
+          div[style*='padding: clamp(1rem, 3vw, 2rem)'] {
+            padding: 1rem !important;
+            text-align: center !important;
+          }
+          
           h3 {
-            font-size: 1.8rem !important;
+            font-size: clamp(1.2rem, 4vw, 1.6rem) !important;
+            text-align: center !important;
           }
-
-          h2 {
-            font-size: 2.2rem !important;
+          
+          h4 {
+            font-size: clamp(0.8rem, 2.5vw, 0.95rem) !important;
+            text-align: center !important;
           }
-
+          
+          p {
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem) !important;
+            text-align: center !important;
+            max-width: 100% !important;
+            margin: 0 auto 1.5rem !important;
+          }
+          
           button {
-            font-size: 0.9rem !important;
-            padding: 0.8rem 1.5rem !important;
+            font-size: clamp(0.7rem, 2.5vw, 0.85rem) !important;
+            padding: 0.7rem 1.5rem !important;
+            width: 100% !important;
+            max-width: 280px !important;
+            margin: 0 auto !important;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          div[style*='height: clamp(250px, 40vw, 400px)'] {
+            height: 200px !important;
+          }
+          
+          div[style*='gap: clamp(3rem, 6vw, 6rem)'] {
+            gap: 2.5rem !important;
+          }
+          
+          div[style*='marginBottom: clamp(2rem, 5vw, 4rem)'] {
+            margin-bottom: 2rem !important;
+          }
+          
+          h2 {
+            font-size: clamp(1.3rem, 5vw, 1.8rem) !important;
+          }
+          
+          p[style*='fontSize: clamp(0.9rem, 2vw, 1rem)'] {
+            font-size: clamp(0.85rem, 3vw, 0.95rem) !important;
+            padding: 0 0.5rem !important;
           }
         }
       `}</style>

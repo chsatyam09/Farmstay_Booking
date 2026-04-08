@@ -12,7 +12,6 @@ const Navigationforgallery = ({}: NavigationProps) => {
 
   const navItems = [
     // { name: 'Blogs', href: '#blogs' },
-    { name: 'Farmhouse', href: '/farmhouse' },
     { name: 'Call us - +91 7903962473', href: '/contact' },
     ]
 
@@ -44,12 +43,13 @@ const Navigationforgallery = ({}: NavigationProps) => {
     >
       <div
         style={{
-          maxWidth: '1280px',
+          maxWidth: '1400px',
           margin: '0 auto',
-          padding: '0 1rem',
+          padding: '0 1rem 0 1rem',
         }}
       >
         <div
+          className="nav-inner"
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -57,12 +57,16 @@ const Navigationforgallery = ({}: NavigationProps) => {
             height: '80px',
           }}
         >
-          {/* Logo */}
-          <div>
+          {/* Logo - nav-logo for mobile pill styling (matches homepage) */}
+          <div className="nav-logo" style={{
+            position: 'relative',
+            left: 0,
+            paddingLeft: '1rem',
+          }}>
             <Link href="/" style={{ display: 'flex', alignItems: 'center' }}>
               <img
-                src="/Images/Aravali Farm Images/Aravali logo.png"
-                alt="Aravali Farm Logo"
+                src="/Images/FarmStay_logo.png"
+                alt="FarmStay Logo"
                 style={{
                   width: '200px',
                   height: 'auto',

@@ -1,15 +1,15 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
+import Link from 'next/link'
 import Navigation from '@/app/components/Navigation'
 import Footer from '@/app/components/Footer'
 import ScrollToTopButton from '@/app/components/ScrollToTopButton'
-import HorizontalContactCard from '@/app/components/HorizontalContactCard'
+import { properties } from '@/app/data/properties'
 
 // Success Modal Component
 function SuccessModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const phoneNumbers = [
-    { number: '+91 7903962473', whatsapp: '917903962473' },
     { number: '+91 9211255393', whatsapp: '919211255393' }
   ]
 
@@ -99,7 +99,7 @@ function SuccessModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => voi
             width: '60px',
             height: '60px',
             borderRadius: '50%',
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            background: '#5a7d5a',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -217,7 +217,7 @@ function SuccessModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => voi
           style={{
             width: '100%',
             padding: '0.75rem 1.25rem',
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            background: '#5a7d5a',
             color: 'white',
             border: 'none',
             borderRadius: '8px',
@@ -228,7 +228,7 @@ function SuccessModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => voi
           }}
           onMouseOver={(e) => {
             e.currentTarget.style.transform = 'translateY(-2px)'
-            e.currentTarget.style.boxShadow = '0 8px 20px rgba(102, 126, 234, 0.4)'
+            e.currentTarget.style.boxShadow = '0 8px 20px rgba(90, 125, 90, 0.4)'
           }}
           onMouseOut={(e) => {
             e.currentTarget.style.transform = 'translateY(0)'
@@ -463,6 +463,7 @@ export default function ContactPage() {
     name: '',
     email: '',
     phone: '',
+    property: '',
     numberOfGuests: '',
     checkInDate: '',
     checkOutDate: '',
@@ -478,6 +479,20 @@ export default function ContactPage() {
     checkInDate: '',
     checkOutDate: '',
   })
+  const contactFormRef = useRef<HTMLDivElement>(null)
+  const [heroQuick, setHeroQuick] = useState({ name: '', email: '', inquiry: '' })
+
+  const handleHeroQuickChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target
+    setHeroQuick((prev) => ({ ...prev, [name]: value }))
+  }
+
+  const handleHeroGetInTouch = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (heroQuick.name.trim()) setFormData((prev) => ({ ...prev, name: heroQuick.name }))
+    if (heroQuick.email.trim()) setFormData((prev) => ({ ...prev, email: heroQuick.email }))
+    contactFormRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -552,6 +567,7 @@ export default function ContactPage() {
       formDataToSend.append('name', formData.name)
       formDataToSend.append('email', formData.email)
       formDataToSend.append('phone', formData.phone)
+      formDataToSend.append('property', formData.property)
       formDataToSend.append('numberOfGuests', formData.numberOfGuests)
       formDataToSend.append('checkInDate', formData.checkInDate)
       formDataToSend.append('checkOutDate', formData.checkOutDate)
@@ -572,6 +588,7 @@ export default function ContactPage() {
           name: '', 
           email: '', 
           phone: '', 
+          property: '',
           numberOfGuests: '', 
           checkInDate: '', 
           checkOutDate: '', 
@@ -601,136 +618,167 @@ export default function ContactPage() {
   return (
     <div style={{ 
       minHeight: '100vh', 
-      fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+      fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+      backgroundColor: '#f5f1eb'
     }}>
       {/* Navigation */}
       <Navigation />
 
-      {/* Hero Section */}
-      <section style={{
-        padding: '2rem 0',
+      {/* Hero Section - same size as Gallery page header */}
+      <section className="contact-hero-section" style={{
         position: 'relative',
-        overflow: 'hidden',
-        height: '60vh',
-        minHeight: '500px'
+        minHeight: '42vh',
+        width: '100%',
+        overflow: 'visible',
+        backgroundColor: '#5a7d5a'
       }}>
-        {/* Image Background */}
-        <img 
-          // src="/Images/Aravali Farm Images/Pool-2.png"
- src="/Images/Aravali Farm Images/property-2.jpg"
-        
-          alt="Contact us"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            zIndex: 0
-          }}
-        />
-        {/* Dark overlay for better text visibility */}
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(0, 0, 0, 0.4)',
-          zIndex: 1
-        }}></div>
-        {/* Decorative Background Elements */}
-        <div style={{
-          position: 'absolute',
-          top: '-50px',
-          right: '-50px',
-          width: '200px',
-          height: '200px',
-          background: 'radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%)',
-          borderRadius: '50%',
-          zIndex: 2
-        }}></div>
-        <div style={{
-          position: 'absolute',
-          bottom: '-100px',
-          left: '-100px',
-          width: '300px',
-          height: '300px',
-          background: 'radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%)',
-          borderRadius: '50%',
-          zIndex: 2
-        }}></div>
-        
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: '0 1rem',
+        <div className="contact-hero-container" style={{
           position: 'relative',
-          zIndex: 2,
-          height: '100%',
+          paddingTop: '140px',
+          paddingBottom: '100px',
           display: 'flex',
-          alignItems: 'center'
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 10,
+          paddingLeft: '1rem',
+          paddingRight: '1rem',
+          height: '100%',
+          minHeight: '42vh'
         }}>
+          {/* Centered Text Content */}
           <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '2rem',
+            display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
+            justifyContent: 'center',
+            textAlign: 'center',
+            padding: '0 clamp(1rem, 3vw, 2rem)',
+            gap: '0.5rem',
             width: '100%',
-            height: '100%'
+            maxWidth: '100%'
           }}>
-            {/* Left Side - Unique Shaped Image */}
-            <div style={{
-              position: 'relative',
-              zIndex: 3,
-              display: 'flex',
-              height: '100%'
+            <h1 style={{
+              fontSize: 'clamp(2.75rem, 7vw, 4.5rem)',
+              fontWeight: '200',
+              color: 'white',
+              margin: '0 0 0.5rem 0',
+              fontFamily: "'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+              lineHeight: '1.1',
+              letterSpacing: '0.04em',
+              textShadow: '0 4px 20px rgba(0, 0, 0, 0.2)'
             }}>
-              {/* <div style={{
-                position: 'relative',
-                marginLeft:'5px',
-                marginTop:'120px',
-                width: '100%',
-                maxWidth: '400px',
-                height: '280px',
-                background: 'rgba(255, 255, 255, 0.1)',
-                backdropFilter: 'blur(10px)',
-                borderRadius: '25px 60px 25px 60px',
-                padding: '15px',
-                boxShadow: '0 15px 30px rgba(0, 0, 0, 0.3)',
-                border: '2px solid rgba(255, 255, 255, 0.2)',
-                transform: 'rotate(-2deg)',
-                transition: 'all 0.4s ease'
+              Contact us ...
+            </h1>
+            <Link
+              href="/Gallery"
+              style={{
+                fontSize: 'clamp(0.8125rem, 1.5vw, 0.9375rem)',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+                fontWeight: '200',
+                color: 'white',
+                textDecoration: 'none',
+                padding: '0.4rem 1rem',
+                borderRadius: '9999px',
+                border: '1.5px solid white',
+                background: 'transparent',
+                transition: 'all 0.3s ease',
+                display: 'inline-block',
+                textAlign: 'center',
+                minWidth: 'auto',
+                marginTop: '0.5rem',
+                boxShadow: '0 2px 10px rgba(0, 0, 0, 0.15)',
+                backdropFilter: 'blur(10px)'
               }}
               onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'rotate(0deg) scale(1.02)';
-                e.currentTarget.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.4)';
+                const target = e.target as HTMLAnchorElement
+                target.style.background = 'white'
+                target.style.border = '2px solid white'
+                target.style.color = '#5a7d5a'
+                target.style.transform = 'translateY(-2px) scale(1.02)'
+                target.style.boxShadow = '0 6px 25px rgba(255, 255, 255, 0.3)'
               }}
               onMouseOut={(e) => {
-                e.currentTarget.style.transform = 'rotate(-2deg) scale(1)';
-                e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.3)';
-              }}>
-                
-              </div> */}
-            </div>
+                const target = e.target as HTMLAnchorElement
+                target.style.background = 'transparent'
+                target.style.border = '2px solid white'
+                target.style.color = 'white'
+                target.style.transform = 'translateY(0) scale(1)'
+                target.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.15)'
+              }}
+              onTouchStart={(e) => {
+                const target = e.currentTarget
+                target.style.background = 'rgba(255, 255, 255, 0.2)'
+                target.style.transform = 'scale(0.98)'
+              }}
+              onTouchEnd={(e) => {
+                const target = e.currentTarget
+                target.style.background = 'transparent'
+                target.style.transform = 'scale(1)'
+              }}
+            >
+              Explore Farmhouse
+            </Link>
 
-            {/* Right Side - Contact Details */}
-            <div style={{
-              padding: '0.5rem 0',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              height: '50%'
-            }}>
-              {/* Horizontal Contact Card */}
-              <div style={{
-                width: '100%',
-                maxWidth: '500px'
-              }}>
-                <HorizontalContactCard />
-              </div>
+            {/* Contact hero form bar - same style as Gallery search bar, contact-related fields */}
+            <div className="contact-hero-form-container">
+              <form onSubmit={handleHeroGetInTouch} className="contact-hero-form">
+                <div className="contact-hero-form-field">
+                  <label className="contact-hero-form-label">
+                    Your Name <span className="required">*</span>
+                  </label>
+                  <div className="contact-hero-input-wrapper">
+                    <input
+                      type="text"
+                      name="name"
+                      value={heroQuick.name}
+                      onChange={handleHeroQuickChange}
+                      placeholder="Enter your name"
+                      className="contact-hero-form-input"
+                    />
+                    <span className="contact-hero-input-icon">👤</span>
+                  </div>
+                </div>
+                <div className="contact-hero-form-field">
+                  <label className="contact-hero-form-label">
+                    Your Email <span className="required">*</span>
+                  </label>
+                  <div className="contact-hero-input-wrapper">
+                    <input
+                      type="email"
+                      name="email"
+                      value={heroQuick.email}
+                      onChange={handleHeroQuickChange}
+                      placeholder="your@email.com"
+                      className="contact-hero-form-input"
+                    />
+                    <span className="contact-hero-input-icon">✉️</span>
+                  </div>
+                </div>
+                <div className="contact-hero-form-field">
+                  <label className="contact-hero-form-label">
+                    I&apos;m interested in
+                  </label>
+                  <div className="contact-hero-input-wrapper">
+                    <select
+                      name="inquiry"
+                      value={heroQuick.inquiry}
+                      onChange={handleHeroQuickChange}
+                      className="contact-hero-form-input contact-hero-form-select"
+                    >
+                      <option value="">Select...</option>
+                      <option value="book">Book a stay</option>
+                      <option value="event">Event / Party</option>
+                      <option value="general">General inquiry</option>
+                      <option value="other">Other</option>
+                    </select>
+                    <span className="contact-hero-input-icon contact-hero-chevron">▼</span>
+                  </div>
+                </div>
+                <button type="submit" className="contact-hero-form-button">
+                  Get in touch
+                </button>
+              </form>
             </div>
           </div>
         </div>
@@ -742,10 +790,224 @@ export default function ContactPage() {
         onClose={() => setShowSuccessModal(false)} 
       />
 
-      {/* Contact Form Section */}
-      <section style={{
+      {/* Why Booking.com Section - warm cream to match footer */}
+      <section className="why-booking-section" style={{
         padding: '4rem 0',
-        background: '#f8fafc'
+        paddingTop: '6rem',
+        background: '#f5f1eb'
+      }}>
+        <div style={{
+          maxWidth: '1400px',
+          margin: '0 auto',
+          padding: '0 1rem'
+        }}>
+          <h2 style={{
+            fontSize: 'clamp(2rem, 5vw, 3rem)',
+            color: '#000000',
+            marginBottom: '3rem',
+            fontWeight: '700',
+            textAlign: 'left'
+          }}>
+            Why FunstayBooking.com ?
+          </h2>
+          
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '1.5rem',
+            maxWidth: '1200px'
+          }}>
+            {/* Card 1: Book now, pay at property */}
+            <div style={{
+              background: '#ffffff',
+              borderRadius: '12px',
+              padding: '2rem',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
+              border: '1px solid rgba(0, 0, 0, 0.06)'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.1)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.05)';
+            }}>
+              <div style={{
+                fontSize: '3rem',
+                marginBottom: '1rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '80px'
+              }}>
+                💵
+              </div>
+              <h3 style={{
+                fontSize: '1.1rem',
+                color: '#000000',
+                marginBottom: '0.75rem',
+                fontWeight: '700',
+                margin: '0 0 0.75rem 0'
+              }}>
+                Book now, pay at the property
+              </h3>
+              <p style={{
+                fontSize: '0.95rem',
+                color: '#000000',
+                lineHeight: '1.5',
+                margin: 0
+              }}>
+                FREE cancellation on most Farmhouse 
+              </p>
+            </div>
+
+            {/* Card 2: Reviews */}
+            <div style={{
+              background: '#ffffff',
+              borderRadius: '12px',
+              padding: '2rem',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
+              border: '1px solid rgba(0, 0, 0, 0.06)'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.1)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.05)';
+            }}>
+              <div style={{
+                fontSize: '3rem',
+                marginBottom: '1rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '80px'
+              }}>
+                🏡
+              </div>
+              <h3 style={{
+                fontSize: '1.1rem',
+                color: '#000000',
+                marginBottom: '0.75rem',
+                fontWeight: '700',
+                margin: '0 0 0.75rem 0'
+              }}>
+                100+ bookings on Every Month
+              </h3>
+              <p style={{
+                fontSize: '0.95rem',
+                color: '#000000',
+                lineHeight: '1.5',
+                margin: 0
+              }}>
+                Get trusted Property with Farmstay 
+              </p>
+            </div>
+
+            {/* Card 3: Properties worldwide */}
+            <div style={{
+              background: '#ffffff',
+              borderRadius: '12px',
+              padding: '2rem',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
+              border: '1px solid rgba(0, 0, 0, 0.06)'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.1)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.05)';
+            }}>
+              <div style={{
+                fontSize: '3rem',
+                marginBottom: '1rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '80px'
+              }}>
+                 🇮🇳
+              </div>
+              <h3 style={{
+                fontSize: '1.1rem',
+                color: '#000000',
+                marginBottom: '0.75rem',
+                fontWeight: '700',
+                margin: '0 0 0.75rem 0'
+              }}>
+                10 + properties in Delhi NCR
+              </h3>
+              <p style={{
+                fontSize: '0.95rem',
+                color: '#000000',
+                lineHeight: '1.5',
+                margin: 0
+              }}>
+                Deal Only in FarmHouse's
+              </p>
+            </div>
+
+            {/* Card 4: Customer service */}
+            <div style={{
+              background: '#ffffff',
+              borderRadius: '12px',
+              padding: '2rem',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
+              border: '1px solid rgba(0, 0, 0, 0.06)'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.1)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.05)';
+            }}>
+              <div style={{
+                fontSize: '3rem',
+                marginBottom: '1rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '80px'
+              }}>
+                🎧
+              </div>
+              <h3 style={{
+                fontSize: '1.1rem',
+                color: '#000000',
+                marginBottom: '0.75rem',
+                fontWeight: '700',
+                margin: '0 0 0.75rem 0'
+              }}>
+                Trusted 24/7 customer service you can rely on
+              </h3>
+              <p style={{
+                fontSize: '0.95rem',
+                color: '#000000',
+                lineHeight: '1.5',
+                margin: 0
+              }}>
+                We're always here to help
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form Section - warm cream to match footer */}
+      <section id="contact-form" ref={contactFormRef} style={{
+        padding: '4rem 0',
+        background: '#f5f1eb'
       }}>
         <div style={{
           maxWidth: '1000px',
@@ -767,7 +1029,7 @@ export default function ContactPage() {
             <div style={{
               width: '80px',
               height: '4px',
-              background: 'linear-gradient(90deg, #667eea 0%, #764ba2 100%)',
+              background: '#5a7d5a',
               borderRadius: '2px',
               margin: '0 auto 1.5rem'
             }}></div>
@@ -844,8 +1106,8 @@ export default function ContactPage() {
                       background: '#ffffff'
                     }}
                     onFocus={(e) => {
-                      e.target.style.borderColor = '#667eea';
-                      e.target.style.boxShadow = '0 0 0 3px rgba(102, 126, 234, 0.1)';
+                      e.target.style.borderColor = '#5a7d5a';
+                      e.target.style.boxShadow = '0 0 0 3px rgba(90, 125, 90, 0.15)';
                     }}
                     onBlur={(e) => {
                       if (errors.name) {
@@ -891,8 +1153,8 @@ export default function ContactPage() {
                       background: '#ffffff'
                     }}
                     onFocus={(e) => {
-                      e.target.style.borderColor = '#667eea';
-                      e.target.style.boxShadow = '0 0 0 3px rgba(102, 126, 234, 0.1)';
+                      e.target.style.borderColor = '#5a7d5a';
+                      e.target.style.boxShadow = '0 0 0 3px rgba(90, 125, 90, 0.15)';
                     }}
                     onBlur={(e) => {
                       if (errors.phone) {
@@ -939,8 +1201,8 @@ export default function ContactPage() {
                       background: '#ffffff'
                     }}
                     onFocus={(e) => {
-                      e.target.style.borderColor = '#667eea';
-                      e.target.style.boxShadow = '0 0 0 3px rgba(102, 126, 234, 0.1)';
+                      e.target.style.borderColor = '#5a7d5a';
+                      e.target.style.boxShadow = '0 0 0 3px rgba(90, 125, 90, 0.15)';
                     }}
                     onBlur={(e) => {
                       if (errors.email) {
@@ -985,8 +1247,8 @@ export default function ContactPage() {
                       cursor: 'pointer'
                     }}
                     onFocus={(e) => {
-                      e.target.style.borderColor = '#667eea';
-                      e.target.style.boxShadow = '0 0 0 3px rgba(102, 126, 234, 0.1)';
+                      e.target.style.borderColor = '#5a7d5a';
+                      e.target.style.boxShadow = '0 0 0 3px rgba(90, 125, 90, 0.15)';
                     }}
                     onBlur={(e) => {
                       e.target.style.borderColor = '#e5e7eb';
@@ -996,6 +1258,49 @@ export default function ContactPage() {
                     <option value="">Select guests</option>
                     {Array.from({ length: 20 }, (_, i) => i + 1).map(num => (
                       <option key={num} value={num}>{num} {num === 1 ? 'Guest' : 'Guests'}</option>
+                    ))}
+                    <option value="25-40">25-40</option>
+                    <option value="40-70">40-70</option>
+                    <option value="100+">100+</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
+                <div>
+                  <label style={{
+                    display: 'block',
+                    fontSize: '0.9rem',
+                    fontWeight: '600',
+                    color: '#374151',
+                    marginBottom: '0.5rem'
+                  }}>Select Property</label>
+                  <select
+                    name="property"
+                    value={formData.property}
+                    onChange={handleChange}
+                    style={{
+                      width: '100%',
+                      padding: '1rem',
+                      border: '2px solid #e5e7eb',
+                      borderRadius: '8px',
+                      fontSize: '1rem',
+                      transition: 'all 0.3s ease',
+                      background: '#ffffff',
+                      cursor: 'pointer'
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#5a7d5a';
+                      e.target.style.boxShadow = '0 0 0 3px rgba(90, 125, 90, 0.15)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = '#e5e7eb';
+                      e.target.style.boxShadow = 'none';
+                    }}
+                  >
+                    <option value="">Select a property</option>
+                    {properties.map(property => (
+                      <option key={property.id} value={property.id}>{property.title}</option>
                     ))}
                   </select>
                 </div>
@@ -1027,8 +1332,8 @@ export default function ContactPage() {
                       background: '#ffffff'
                     }}
                     onFocus={(e) => {
-                      e.target.style.borderColor = '#667eea';
-                      e.target.style.boxShadow = '0 0 0 3px rgba(102, 126, 234, 0.1)';
+                      e.target.style.borderColor = '#5a7d5a';
+                      e.target.style.boxShadow = '0 0 0 3px rgba(90, 125, 90, 0.15)';
                     }}
                     onBlur={(e) => {
                       if (errors.checkInDate) {
@@ -1073,8 +1378,8 @@ export default function ContactPage() {
                       background: '#ffffff'
                     }}
                     onFocus={(e) => {
-                      e.target.style.borderColor = '#667eea';
-                      e.target.style.boxShadow = '0 0 0 3px rgba(102, 126, 234, 0.1)';
+                      e.target.style.borderColor = '#5a7d5a';
+                      e.target.style.boxShadow = '0 0 0 3px rgba(90, 125, 90, 0.15)';
                     }}
                     onBlur={(e) => {
                       if (errors.checkOutDate) {
@@ -1121,8 +1426,8 @@ export default function ContactPage() {
                     lineHeight: '1.5'
                   }}
                   onFocus={(e) => {
-                    e.target.style.borderColor = '#667eea';
-                    e.target.style.boxShadow = '0 0 0 3px rgba(102, 126, 234, 0.1)';
+                    e.target.style.borderColor = '#5a7d5a';
+                    e.target.style.boxShadow = '0 0 0 3px rgba(90, 125, 90, 0.15)';
                   }}
                   onBlur={(e) => {
                     e.target.style.borderColor = '#e5e7eb';
@@ -1138,7 +1443,7 @@ export default function ContactPage() {
                 style={{
                   background: isSubmitting 
                     ? '#a0aec0' 
-                    : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    : '#5a7d5a',
                   color: 'white',
                   padding: '1rem 2rem',
                   borderRadius: '8px',
@@ -1148,7 +1453,7 @@ export default function ContactPage() {
                   transition: 'all 0.3s ease',
                   boxShadow: isSubmitting 
                     ? '0 4px 15px rgba(160, 174, 192, 0.3)' 
-                    : '0 4px 15px rgba(102, 126, 234, 0.3)',
+                    : '0 4px 15px rgba(90, 125, 90, 0.25)',
                   border: 'none',
                   alignSelf: 'center',
                   minWidth: '200px'
@@ -1156,14 +1461,14 @@ export default function ContactPage() {
                 onMouseOver={(e) => {
                   if (!isSubmitting) {
                     e.currentTarget.style.transform = 'translateY(-2px)';
-                    e.currentTarget.style.boxShadow = '0 8px 25px rgba(102, 126, 234, 0.4)';
+                    e.currentTarget.style.boxShadow = '0 8px 25px rgba(90, 125, 90, 0.35)';
                   }
                 }}
                 onMouseOut={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.boxShadow = isSubmitting 
                     ? '0 4px 15px rgba(160, 174, 192, 0.3)' 
-                    : '0 4px 15px rgba(102, 126, 234, 0.3)';
+                    : '0 4px 15px rgba(90, 125, 90, 0.25)';
                 }}
               >
                 {isSubmitting ? (
@@ -1190,9 +1495,8 @@ export default function ContactPage() {
         </div>
       </section>
 
-
       {/* FAQ Section */}
-      <section style={{
+      {/* <section style={{
         padding: '4rem 0',
         background: '#ffffff'
       }}>
@@ -1257,22 +1561,18 @@ export default function ContactPage() {
                 question: "Do you provide catering services?",
                 answer: "We can arrange catering services for your events and celebrations. Please discuss your requirements with us in advance, and we'll help you plan the perfect menu."
               },
-              {
-                question: "What activities are available nearby?",
-                answer: "The area offers various activities including nature walks, local sightseeing, adventure sports, and cultural experiences. We can help you plan activities based on your interests."
-              },
           
             ].map((faq, index) => (
               <FAQItem key={index} question={faq.question} answer={faq.answer} />
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
-      {/* Cancellation Policy Section */}
+
       <section style={{
         padding: '4rem 0',
-        background: '#f8fafc'
+        background: '#f5f1eb'
       }}>
         <div style={{
           maxWidth: '1000px',
@@ -1296,6 +1596,7 @@ export default function ContactPage() {
             maxWidth: '900px',
             margin: '0 auto'
           }}>
+
             {/* Free Cancellation Card */}
             <div style={{
               background: 'white',
@@ -1329,12 +1630,12 @@ export default function ContactPage() {
                 lineHeight: '1.5',
                 margin: 0
               }}>
-                Cancel up to 7 days before check-in for a full refund
+               Guests will receive a 100% refund on full Payment
               </p>
             </div>
 
             {/* Partial Refund Card */}
-            <div style={{
+            {/* <div style={{
               background: 'white',
               borderRadius: '12px',
               padding: '2rem',
@@ -1368,7 +1669,7 @@ export default function ContactPage() {
               }}>
                 50% refund for cancellations 3-7 days before check-in
               </p>
-            </div>
+            </div> */}
 
             {/* No Refund Card */}
             <div style={{
@@ -1434,53 +1735,9 @@ export default function ContactPage() {
               margin: 0,
               textAlign: 'center'
             }}>
-              After receiving the token amount, we always share an official booking confirmation with all the details through our official email ID: aravalifarm21@gmail.com
+After receiving your query, we will call you to take confirmation. Once the token amount is received, we will share an official booking confirmation with all the details through our official email ID: bookingfarmstay@gmail.com
+.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Map Section */}
-      <section style={{
-        padding: '4rem 0',
-        background: '#ffffff'
-      }}>
-        <div style={{
-          padding: '0 2rem'
-        }}>
-          <h2 style={{
-            fontSize: 'clamp(2rem, 5vw, 3rem)',
-            color: '#000000',
-            textAlign: 'center',
-            marginBottom: '1rem',
-            fontWeight: '600'
-          }}>
-            Find Us Here
-          </h2>
-          <div style={{
-            width: '80px',
-            height: '3px',
-            background: 'linear-gradient(90deg, #000000 0%, #666666 100%)',
-            borderRadius: '2px',
-            margin: '0 auto 3rem'
-          }}></div>
-          <div style={{
-            borderRadius: '16px',
-            overflow: 'hidden',
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
-            height: '530px',
-            border: '2px solid rgba(0, 0, 0, 0.05)',
-            width: '100%'
-          }}>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4446.41228342973!2d76.92335707633261!3d28.291821375852507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d3bd8d81db18d%3A0x289dc2edc4500c5f!2sAravali%20Farm!5e1!3m2!1sen!2sin!4v1760944508029!5m2!1sen!2sin"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
           </div>
         </div>
       </section>
@@ -1504,328 +1761,307 @@ export default function ContactPage() {
           overflow-x: hidden;
         }
         
-        /* Contact page responsive styles */
-        @media (max-width: 1024px) {
-          section[style*="height: 60vh"] {
-            height: auto !important;
-            min-height: 60vh !important;
-            padding: 3rem 0 !important;
+        /* Contact hero form bar - same look as Gallery search bar */
+        .contact-hero-form-container {
+          position: absolute;
+          bottom: -56px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 90%;
+          max-width: 1200px;
+          z-index: 20;
+          background: white;
+          border-radius: 12px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+          padding: 12px 14px;
+          margin: 0 auto;
+        }
+
+        .contact-hero-form {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+          gap: 12px;
+          align-items: end;
+        }
+
+        .contact-hero-form-field {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .contact-hero-form-label {
+          font-size: 0.8125rem;
+          font-weight: 600;
+          color: #333;
+          margin-bottom: 6px;
+          display: block;
+        }
+
+        .contact-hero-form-label .required {
+          color: #e74c3c;
+        }
+
+        .contact-hero-input-wrapper {
+          position: relative;
+          width: 100%;
+        }
+
+        .contact-hero-form-input {
+          width: 100%;
+          padding: 10px 36px 10px 12px;
+          border: 2px solid #FFB700;
+          border-radius: 8px;
+          font-size: 0.9375rem;
+          outline: none;
+          transition: all 0.3s;
+          font-family: inherit;
+          box-sizing: border-box;
+          background-color: white;
+        }
+
+        .contact-hero-form-input:focus {
+          border-color: #FFB700;
+          box-shadow: 0 0 0 3px rgba(255, 183, 0, 0.1);
+        }
+
+        .contact-hero-input-icon {
+          position: absolute;
+          right: 14px;
+          top: 50%;
+          transform: translateY(-50%);
+          pointer-events: none;
+          font-size: 1.1rem;
+          color: #666;
+        }
+
+        .contact-hero-input-icon.contact-hero-chevron {
+          font-size: 0.75rem;
+          color: #999;
+        }
+
+        .contact-hero-form-select {
+          cursor: pointer;
+          appearance: none;
+          padding-right: 40px;
+        }
+
+        .contact-hero-form-button {
+          padding: 10px 24px;
+          background-color: #16a34a;
+          color: white;
+          border: none;
+          border-radius: 8px;
+          font-size: 0.9375rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background-color 0.3s;
+          white-space: nowrap;
+          height: fit-content;
+        }
+
+        .contact-hero-form-button:hover {
+          background-color: #15803d;
+        }
+
+        @media (max-width: 900px) {
+          .contact-hero-form {
+            grid-template-columns: repeat(2, 1fr) !important;
           }
-          
+        }
+
+        @media (max-width: 768px) {
+          .contact-hero-container {
+            padding-left: 0.75rem !important;
+            padding-right: 0.75rem !important;
+          }
+          .contact-hero-form-container {
+            position: relative !important;
+            bottom: auto !important;
+            left: auto !important;
+            transform: none !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 20px 0 24px 0 !important;
+            border-radius: 12px !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+            border: 1px solid rgba(0, 0, 0, 0.08) !important;
+            padding: 20px 14px !important;
+          }
+
+          .contact-hero-form {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 14px !important;
+            align-items: stretch !important;
+          }
+
+          .contact-hero-form-field {
+            width: 100% !important;
+          }
+
+          .contact-hero-form-input {
+            padding: 14px 40px 14px 14px !important;
+            font-size: 16px !important;
+            min-height: 48px !important;
+          }
+
+          .contact-hero-form-button {
+            width: 100% !important;
+            padding: 16px !important;
+            font-size: 1rem !important;
+            font-weight: 600 !important;
+            min-height: 48px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .contact-hero-container {
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+          }
+          .contact-hero-form-container {
+            width: 100% !important;
+            margin: 16px 0 20px 0 !important;
+            padding: 16px 12px !important;
+          }
+        }
+
+        /* Contact hero - match Gallery header size at all breakpoints */
+        @media (max-width: 900px) {
+          .contact-hero-section {
+            min-height: 38vh !important;
+          }
+          .contact-hero-container {
+            padding-top: 120px !important;
+            padding-bottom: 80px !important;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .contact-hero-section {
+            min-height: auto !important;
+            padding-bottom: 0 !important;
+            overflow: visible !important;
+          }
+          .contact-hero-container {
+            padding-top: 100px !important;
+            padding-bottom: 0 !important;
+            padding-left: 1.25rem !important;
+            padding-right: 1.25rem !important;
+            min-height: auto !important;
+          }
+          .contact-hero-container h1 {
+            font-size: clamp(2rem, 6vw, 2.75rem) !important;
+            font-weight: 200 !important;
+            margin-bottom: 0.25rem !important;
+          }
+          .contact-hero-container a {
+            font-size: clamp(0.875rem, 2.5vw, 1rem) !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .contact-hero-container {
+            padding-top: 88px !important;
+            padding-bottom: 0 !important;
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+          }
+          .contact-hero-container h1 {
+            font-size: clamp(1.75rem, 5.5vw, 2.25rem) !important;
+            font-weight: 200 !important;
+          }
+          .contact-hero-container a {
+            font-size: clamp(0.8125rem, 2vw, 0.9375rem) !important;
+          }
+        }
+
+        /* Rest of page responsive styles */
+        @media (max-width: 1024px) {
           div[style*="gridTemplateColumns: 1fr 1fr"] {
             grid-template-columns: 1fr !important;
             gap: 2rem !important;
           }
-          
           div[style*="height: 280px"] {
             height: 250px !important;
           }
-          
-          div[style*="borderRadius: 25px 60px 25px 60px"] {
-            border-radius: 20px 50px 20px 50px !important;
-            transform: rotate(-1deg) !important;
-          }
-          
-          div[style*="borderRadius: 20px 50px 20px 50px"] {
-            border-radius: 15px 40px 15px 40px !important;
-          }
-          
           div[style*="maxWidth: 400px"] {
             max-width: 350px !important;
-          }
-          
-          div[style*="maxWidth: 500px"] {
-            max-width: 100% !important;
           }
         }
         
         @media (max-width: 768px) {
-          section[style*="height: 60vh"] {
-            height: auto !important;
-            min-height: 50vh !important;
-            padding: 2rem 0 !important;
+          .why-booking-section {
+            padding-top: 2.5rem !important;
+            padding-bottom: 2.5rem !important;
           }
-          
+          .why-booking-section h2 {
+            margin-bottom: 2rem !important;
+          }
           div[style*="gridTemplateColumns: 1fr 1fr"] {
             grid-template-columns: 1fr !important;
             gap: 2rem !important;
           }
-          
           div[style*="height: 280px"] {
             height: 200px !important;
           }
-          
           div[style*="height: 250px"] {
             height: 180px !important;
           }
-          
-          div[style*="height: 600px"] {
-            height: 400px !important;
-          }
-          
-          div[style*="borderRadius: 25px 60px 25px 60px"] {
-            border-radius: 15px 40px 15px 40px !important;
-            transform: rotate(0deg) !important;
-            padding: 12px !important;
-          }
-          
-          div[style*="borderRadius: 15px 40px 15px 40px"] {
-            border-radius: 10px 30px 10px 30px !important;
-          }
-          
-          div[style*="maxWidth: 400px"] {
-            max-width: 300px !important;
-          }
-          
-          div[style*="maxWidth: 350px"] {
-            max-width: 280px !important;
-          }
-          
-          h1[style*="fontSize: clamp(2rem, 4vw, 3rem)"] {
-            font-size: clamp(1.5rem, 3vw, 2.5rem) !important;
-          }
-          
           h2[style*="fontSize: clamp(2rem, 5vw, 3rem)"] {
             font-size: clamp(1.5rem, 4vw, 2.5rem) !important;
           }
-          
-          div[style*="padding: 2rem 0"] {
-            padding: 1.5rem 0 !important;
-          }
-          
-          div[style*="padding: 3rem"] {
-            padding: 2rem !important;
-          }
-          
-          div[style*="padding: 2rem"] {
-            padding: 1.5rem !important;
-          }
-          
           div[style*="maxWidth: 1000px"] {
             max-width: 100% !important;
             padding: 0 0.5rem !important;
           }
-          
           div[style*="maxWidth: 900px"] {
             max-width: 100% !important;
             padding: 0 0.5rem !important;
           }
-          
           div[style*="maxWidth: 800px"] {
             max-width: 100% !important;
             padding: 0 0.5rem !important;
           }
-          
-          div[style*="padding: 0 2rem"] {
-            padding: 0 1rem !important;
-          }
-          
-          h3[style*="fontSize: 1.2rem"] {
-            font-size: 1.1rem !important;
-          }
-          
-          h3[style*="fontSize: 1.1rem"] {
-            font-size: 1rem !important;
-          }
-          
-          /* Floating elements mobile adjustments */
-          div[style*="width: 40px"] {
-            width: 35px !important;
-            height: 35px !important;
-            font-size: 1rem !important;
-          }
-          
-          div[style*="gap: 0.75rem"] {
-            gap: 0.5rem !important;
-          }
         }
         
         @media (max-width: 480px) {
-          section[style*="height: 60vh"] {
-            height: auto !important;
-            min-height: 45vh !important;
-            padding: 1.5rem 0 !important;
+          .why-booking-section {
+            padding-top: 1.75rem !important;
+            padding-bottom: 1.75rem !important;
           }
-          
-          div[style*="gridTemplateColumns: 1fr 1fr"] {
-            grid-template-columns: 1fr !important;
-            gap: 1.5rem !important;
+          .why-booking-section h2 {
+            margin-bottom: 1.5rem !important;
           }
-          
           div[style*="height: 280px"] {
             height: 150px !important;
           }
-          
           div[style*="height: 250px"] {
             height: 130px !important;
           }
-          
-          div[style*="height: 200px"] {
-            height: 120px !important;
-          }
-          
-          div[style*="height: 180px"] {
-            height: 100px !important;
-          }
-          
-          div[style*="height: 600px"] {
-            height: 300px !important;
-          }
-          
-          div[style*="height: 400px"] {
-            height: 250px !important;
-          }
-          
-          div[style*="borderRadius: 30px 70px 30px 70px"] {
-            border-radius: 15px 35px 15px 35px !important;
-            transform: rotate(0deg) !important;
-            padding: 12px !important;
-          }
-          
-          div[style*="borderRadius: 20px 50px 20px 50px"] {
-            border-radius: 10px 25px 10px 25px !important;
-          }
-          
-          div[style*="padding: 2rem 0"] {
-            padding: 1rem 0 !important;
-          }
-          
-          div[style*="padding: 3rem 0"] {
-            padding: 2rem 0 !important;
-          }
-          
-          div[style*="padding: 2rem"] {
-            padding: 1rem !important;
-          }
-          
-          div[style*="padding: 1.5rem"] {
-            padding: 1rem !important;
-          }
-          
-          div[style*="padding: 0 2rem"] {
-            padding: 0 0.75rem !important;
-          }
-          
-          h1[style*="fontSize: clamp(2.5rem, 5vw, 4rem)"] {
-            font-size: clamp(1.5rem, 3vw, 2.5rem) !important;
-          }
-          
           h2[style*="fontSize: clamp(2rem, 5vw, 3rem)"] {
             font-size: clamp(1.25rem, 3vw, 2rem) !important;
           }
-          
-          p[style*="fontSize: 1.1rem"] {
-            font-size: 1rem !important;
-          }
-          
-          p[style*="fontSize: 0.95rem"] {
-            font-size: 0.9rem !important;
-          }
-          
-          h4[style*="fontSize: 1rem"] {
-            font-size: 0.9rem !important;
-          }
-          
-          /* Fix card layout for mobile */
-          div[style*="display: flex"] {
-            flex-direction: column !important;
-            align-items: flex-start !important;
-          }
-          
-          div[style*="marginBottom: 1.5rem"] {
-            margin-bottom: 1rem !important;
-          }
-          
-          div[style*="width: 50px"] {
-            width: 45px !important;
-            height: 45px !important;
-          }
-          
-          div[style*="marginRight: 1rem"] {
-            margin-right: 0 !important;
-            margin-bottom: 0.75rem !important;
-          }
-          
-          /* Floating elements mobile */
-          div[style*="width: 40px"] {
-            width: 30px !important;
-            height: 30px !important;
-            font-size: 0.9rem !important;
-          }
-          
-          div[style*="gap: 0.75rem"] {
-            gap: 0.4rem !important;
-          }
-          
-          div[style*="bottom: 20px"] {
-            bottom: 15px !important;
-          }
-          
-          div[style*="left: 20px"] {
-            left: 15px !important;
-          }
-          
-          div[style*="top: 15px"] {
-            top: 12px !important;
-          }
-          
-          div[style*="right: 15px"] {
-            right: 12px !important;
+          div[style*="padding: 3rem"] {
+            padding: 2rem !important;
           }
         }
         
         @media (max-width: 360px) {
+          .contact-hero-container {
+            padding-top: 88px !important;
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+          }
+          .contact-hero-container h1 {
+            font-size: clamp(1.5rem, 4vw, 2rem) !important;
+            font-weight: 200 !important;
+          }
           div[style*="gridTemplateColumns: repeat(auto-fit, minmax(280px, 1fr))"] {
             grid-template-columns: 1fr !important;
             gap: 1rem !important;
             padding: 0 0.5rem !important;
-            max-width: 100% !important;
-            width: 100% !important;
-          }
-          
-          div[style*="padding: 3rem"] {
-            padding: 1rem !important;
-          }
-          
-          div[style*="padding: 2rem"] {
-            padding: 1rem !important;
-          }
-          
-          div[style*="padding: 1.5rem"] {
-            padding: 0.75rem !important;
-          }
-          
-          div[style*="padding: 0 2rem"] {
-            padding: 0 0.5rem !important;
-          }
-          
-          h1[style*="fontSize: clamp(2rem, 5vw, 3rem)"] {
-            font-size: clamp(1.25rem, 3vw, 2rem) !important;
-          }
-          
-          h2[style*="fontSize: clamp(2rem, 5vw, 3rem)"] {
-            font-size: clamp(1.25rem, 3vw, 2rem) !important;
-          }
-          
-          /* Extra small mobile fixes */
-          div[style*="display: flex"] {
-            flex-direction: column !important;
-            align-items: center !important;
-            text-align: center !important;
-          }
-          
-          div[style*="width: 50px"] {
-            width: 40px !important;
-            height: 40px !important;
-          }
-          
-          div[style*="marginRight: 1rem"] {
-            margin-right: 0 !important;
-            margin-bottom: 0.5rem !important;
-          }
-          
-          div[style*="marginBottom: 1.5rem"] {
-            margin-bottom: 0.75rem !important;
           }
         }
       `}</style>

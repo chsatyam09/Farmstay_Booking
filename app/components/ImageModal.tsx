@@ -270,17 +270,18 @@ const ImageModal = ({ imageSrc, onClose, onNext, onPrev, currentIndex, totalImag
           bottom: '25px',
           left: '50%',
           transform: 'translateX(-50%)',
-          color: 'rgba(255, 255, 255, 0.8)',
-          fontSize: '14px',
+          color: 'rgba(151, 148, 148, 0.8)',
+          fontSize: '7px',
           textAlign: 'center',
           backgroundColor: 'rgba(0, 0, 0, 0.6)',
           backdropFilter: 'blur(10px)',
           padding: '8px 16px',
           borderRadius: '25px',
-          border: '1px solid rgba(255, 255, 255, 0.1)'
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          fontFamily: 'Arial, sans-serif'
         }}
       >
-Use arrow keys to navigate • Press ESC or click outside to close
+  Use arrow keys to navigate 
       </div>
       
       {/* CSS for loading spinner animation */}

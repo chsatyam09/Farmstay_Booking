@@ -20,7 +20,7 @@ const ContentSections = () => {
             textAlign: 'center',
             letterSpacing: '0.05em'
           }}>
-            Overview
+            About Our Luxury Farmhouse in Gurgaon
           </h2>
           <div style={{
             width: '6rem',
@@ -34,19 +34,21 @@ const ContentSections = () => {
             gap: '2rem'
           }} className="content-grid">
             <div>
-              <h3 style={{ color: '#111111', marginBottom: '1rem', fontSize: '1.5rem' }}>About Aravali Farm</h3>
+              <h3 style={{ color: '#111111', marginBottom: '1rem', fontSize: '1.5rem' }}>Best Farmhouse Near Gurgaon for Parties & Weekend Stays</h3>
               <p style={{ color: '#666', lineHeight: '1.7', fontSize: '1.1rem' }}>
-                Nestled in the serene beauty of nature, Aravali Farm offers the perfect escape from city life. 
-                Our beautiful property combines luxury with rustic charm, creating an ideal venue for celebrations, 
-                corporate events, and peaceful getaways.
+                Nestled in the serene beauty of nature, Aravali Farm is the best farmhouse near Gurgaon offering the perfect escape from city life. 
+                Our luxury farmhouse in Gurgaon combines modern amenities with rustic charm, creating an ideal venue for farmhouse for party in Gurgaon, 
+                farmhouse for wedding in Gurgaon, and farmhouse near Delhi for weekend stay. Located in Delhi NCR, we provide farmhouse with pool in Gurgaon, 
+                spacious lawns, and all amenities for memorable celebrations.
               </p>
             </div>
             <div>
-              <h3 style={{ color: '#111111', marginBottom: '1rem', fontSize: '1.5rem' }}>Our Mission</h3>
+              <h3 style={{ color: '#111111', marginBottom: '1rem', fontSize: '1.5rem' }}>Private Farmhouse Near Delhi NCR</h3>
               <p style={{ color: '#666', lineHeight: '1.7', fontSize: '1.1rem' }}>
                 We strive to provide exceptional hospitality in a natural setting, creating memorable experiences 
-                for our guests while maintaining harmony with the environment. Every event is crafted with attention 
-                to detail and personalized service.
+                for our guests. Our farmhouse for rent in Gurgaon is perfect for farmhouse for birthday party in Gurgaon, 
+                farmhouse for corporate party in Gurgaon, and farmhouse for family get-together in Gurgaon. Every event is crafted with attention 
+                to detail and personalized service, making us the top choice for affordable farmhouse in Delhi NCR.
               </p>
             </div>
           </div>
@@ -84,12 +86,12 @@ const ContentSections = () => {
             gap: '2rem'
           }} className="amenities-grid">
             {[
-              { title: 'Swimming Pool', icon: '🏊', description: 'Large swimming pool with crystal clear water' },
-              { title: 'Garden Area', icon: '🌿', description: 'Beautiful landscaped gardens for relaxation' },
-              { title: 'Event Spaces', icon: '🎉', description: 'Multiple venues for different types of events' },
-              { title: 'Parking', icon: '🚗', description: 'Ample parking space for guests' },
-              { title: 'Catering', icon: '🍽️', description: 'Professional catering services available' },
-              { title: 'Sound System', icon: '🎵', description: 'High-quality audio equipment for events' }
+              { title: 'Private Swimming Pool', icon: '🏊', description: 'Farmhouse with pool in Gurgaon - Large swimming pool perfect for pool parties and relaxation' },
+              { title: 'Lush Green Garden', icon: '🌿', description: 'Beautiful 5000+ sq ft landscaped garden area for outdoor events and relaxation' },
+              { title: 'Spacious Event Spaces', icon: '🎉', description: 'Multiple venues perfect for farmhouse for party in Gurgaon, weddings, and corporate events' },
+              { title: 'Ample Parking', icon: '🚗', description: 'Free parking space for 6+ vehicles, ideal for farmhouse booking in Gurgaon' },
+              { title: 'Professional Catering', icon: '🍽️', description: 'Catering services available for farmhouse for wedding in Gurgaon and celebrations' },
+              { title: 'Premium Sound System', icon: '🎵', description: 'Farmhouse with music system - High-quality audio equipment for events until 4 AM' }
             ].map((amenity, index) => (
               <div key={index} style={{
                 background: 'white',

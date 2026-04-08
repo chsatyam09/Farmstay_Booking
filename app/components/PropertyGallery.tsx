@@ -1,82 +1,9 @@
 "use client";
 
 import { useRouter } from 'next/navigation'
+import { properties } from '@/app/data/properties'
 
-interface Property {
-  id: number;
-  title: string;
-  location: string;
-  price: string;
-  bedrooms: number;
-  bathrooms: number;
-  image: string;
-}
-
-const properties: Property[] = [
-  {
-    id: 1,
-    title: "2 BHK Crystal Farmhouse in Noida Sector 135 with Pool - FVB 116",
-    location: "Noida · Sector 135",
-    price: "₹16,000 / night",
-    bedrooms: 2,
-    bathrooms: 3,
-    image: "/images/noida1.jpg",
-  },
-  {
-    id: 2,
-    title: "2 BHK Farmhouse Noida Sector 135 - FVB 101",
-    location: "Noida · Sector 135",
-    price: "₹18,000 / night",
-    bedrooms: 2,
-    bathrooms: 3,
-    image: "/images/noida2.jpg",
-  },
-  {
-    id: 3,
-    title: "2 BHK Green Beauty Farmhouse Noida Sector 135 - FVB 103",
-    location: "Noida · Sector 135",
-    price: "₹18,000 / night",
-    bedrooms: 2,
-    bathrooms: 2,
-    image: "/images/noida3.jpg",
-  },
-  {
-    id: 4,
-    title: "3 BHK Luxury Farmhouse Noida Sector 135 - FVB 104",
-    location: "Noida · Sector 135",
-    price: "₹22,000 / night",
-    bedrooms: 3,
-    bathrooms: 3,
-    image: "/images/noida1.jpg",
-  },
-  {
-    id: 5,
-    title: "2 BHK Premium Farmhouse with Garden - FVB 105",
-    location: "Noida · Sector 135",
-    price: "₹20,000 / night",
-    bedrooms: 2,
-    bathrooms: 2,
-    image: "/images/noida2.jpg",
-  },
-  {
-    id: 6,
-    title: "4 BHK Grand Farmhouse with Pool & Lawn - FVB 106",
-    location: "Noida · Sector 135",
-    price: "₹35,000 / night",
-    bedrooms: 4,
-    bathrooms: 4,
-    image: "/images/noida3.jpg",
-  },
-  {
-    id: 7,
-    title: "3 BHK Executive Farmhouse with Modern Amenities - FVB 107",
-    location: "Noida · Sector 135",
-    price: "₹25,000 / night",
-    bedrooms: 3,
-    bathrooms: 3,
-    image: "/images/noida1.jpg",
-  },
-];
+export type { Property } from '@/app/data/properties'
 
 export default function PropertyGallery() {
   const router = useRouter()
@@ -89,23 +16,22 @@ export default function PropertyGallery() {
     <section 
       id="gallery" 
       style={{
-        padding: '4rem 1.5rem',
-        background: '#ffffff',
+        padding: '2rem clamp(1rem, 4vw, 2rem)',
+        background: 'transparent',
         position: 'relative',
         zIndex: 10,
-        minHeight: 'auto'
+        minHeight: 'auto',
+        boxSizing: 'border-box'
       }}
     >
-
       <div 
         style={{
           display: 'grid',
-          gap: '2.5rem',
+          gap: '1.5rem',
           gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
           maxWidth: '1400px',
           margin: '0 auto',
           width: '100%',
-          padding: '0 1rem',
           boxSizing: 'border-box'
         }}
       >
@@ -114,11 +40,11 @@ export default function PropertyGallery() {
             key={property.id}
             onClick={() => handleCheckAvailability(property.id)}
             style={{
-              background: 'white',
+              background: '#ffffff',
               borderRadius: '16px',
               overflow: 'hidden',
               boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-              border: '1px solid #f3f4f6',
+              border: '1px solid rgba(0, 0, 0, 0.08)',
               transition: 'all 0.3s ease',
               cursor: 'pointer'
             }}
@@ -268,28 +194,24 @@ export default function PropertyGallery() {
       <style jsx>{`
         /* Gallery page responsive styles */
         @media (max-width: 1024px) {
+          #gallery {
+            padding: 1.5rem 1rem !important;
+          }
           div[style*="gridTemplateColumns: repeat(auto-fit, minmax(280px, 1fr))"] {
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
             gap: 2rem !important;
-            padding: 0 1rem !important;
-          }
-          
-          div[style*="padding: 8rem 1.5rem 4rem"] {
-            padding: 6rem 1rem 3rem !important;
           }
         }
         
         @media (max-width: 768px) {
+          #gallery {
+            padding: 1.5rem 0.75rem !important;
+          }
           div[style*="gridTemplateColumns: repeat(auto-fit, minmax(280px, 1fr))"] {
             grid-template-columns: 1fr !important;
             gap: 1.5rem !important;
-            padding: 0 0.75rem !important;
             max-width: 100% !important;
             width: 100% !important;
-          }
-          
-          div[style*="padding: 8rem 1.5rem 4rem"] {
-            padding: 4rem 0.75rem 2rem !important;
           }
           
           h2[style*="fontSize: clamp(2rem, 5vw, 3rem)"] {
@@ -306,16 +228,14 @@ export default function PropertyGallery() {
         }
         
         @media (max-width: 480px) {
+          #gallery {
+            padding: 1.25rem 0.75rem !important;
+          }
           div[style*="gridTemplateColumns: repeat(auto-fit, minmax(280px, 1fr))"] {
             grid-template-columns: 1fr !important;
             gap: 1rem !important;
-            padding: 0 0.5rem !important;
             max-width: 100% !important;
             width: 100% !important;
-          }
-          
-          div[style*="padding: 8rem 1.5rem 4rem"] {
-            padding: 3rem 0.5rem 1.5rem !important;
           }
           
           h2[style*="fontSize: clamp(2rem, 5vw, 3rem)"] {
@@ -348,16 +268,14 @@ export default function PropertyGallery() {
         }
         
         @media (max-width: 360px) {
+          #gallery {
+            padding: 1rem 0.5rem !important;
+          }
           div[style*="gridTemplateColumns: repeat(auto-fit, minmax(280px, 1fr))"] {
             grid-template-columns: 1fr !important;
             gap: 0.75rem !important;
-            padding: 0 0.25rem !important;
             max-width: 100% !important;
             width: 100% !important;
-          }
-          
-          div[style*="padding: 8rem 1.5rem 4rem"] {
-            padding: 2rem 0.25rem 1rem !important;
           }
           
           h2[style*="fontSize: clamp(2rem, 5vw, 3rem)"] {
